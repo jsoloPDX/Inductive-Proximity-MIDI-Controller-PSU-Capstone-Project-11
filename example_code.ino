@@ -3,7 +3,7 @@
 void setup() {
   // put your setup code here, to run once:
   int temp = 7;
-  int example = 8;
+  int example = 100;
 }
 
 void loop() {

@@ -1,0 +1,39 @@
+
+We need to decide the functionality of our device. 
+For simplicity, I suggest the device has several modes that the user can choose from.
+Lets say that the device has 3 sensor inputs.
+
+Mode 1) Continuous Play - works most like an actual theremin 
+new note commands are sent whenever the pitch sensor crosses a pitch change threshold
+mapping...
+Sensor1: Pitch
+Sensor2: Velocity (volume)
+Sensor3: Modulation (some Control Change parameter)
+
+Mode 2) Gated Play - notes are not played all the time, but they do have a constant volume
+new notes commands are sent whenever the gate threshold is crossed (the hand gets near enough)
+mapping...
+Sensor1: Pitch
+Sensor2: Gate Threshold
+Sensor3: Modulation (some Control Change parameter)
+
+Mode 3) Parameter control - this mode would be to stricly change parameters of 
+a synthesizer but not trigger any new nots to be played. 
+mapping..
+Sensor1: Control Change xx 
+sensor2: control change xx
+sensor3: control change xx
+
+if we had strict modes like this, we could simply have a momentary push button to cycled through the different modes
+and some indicator to show the user which mode they are in. 
+
+a user may want more control ability,
+Things to consider...
+
+might want dedicated encoders or pots to control...
+
+1) SPAN: like being able to choose the span of the notes associated with proximity.
+for example, does 1 foot of proximity change correspond to 2 octaves?
+
+2) RESTING NOTE: Where does the keyboard start, is middle C the lowest note? 
+

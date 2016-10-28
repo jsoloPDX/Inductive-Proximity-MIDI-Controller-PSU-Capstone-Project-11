@@ -8,7 +8,7 @@
 
 void main( void )
 {
-	USART_Init(MYUBRR);
+	MIDI_Init();
 	unsigned char NoteON = 0x90;
 	unsigned char DataNote = 0x50;
 	unsigned char DataVelocity = 0x7F; 

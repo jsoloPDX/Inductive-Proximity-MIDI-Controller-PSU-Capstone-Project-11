@@ -30,3 +30,8 @@ void MIDI_Transmit(unsigned char System, unsigned char Data1, unsigned char Data
 	USART_Transmit(Data1);
 	USART_Transmit(Data2);
 }
+
+void MIDI_Init()
+{
+	USART_Init(MYUBRR);
+}

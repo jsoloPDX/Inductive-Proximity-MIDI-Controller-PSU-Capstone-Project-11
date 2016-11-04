@@ -15773,6 +15773,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="93.98" y1="93.98" x2="93.98" y2="134.62" width="0.1524" layer="95"/>
 <wire x1="93.98" y1="134.62" x2="60.96" y2="134.62" width="0.1524" layer="95"/>
 <text x="66.04" y="137.16" size="1.778" layer="95" font="fixed">Test point header</text>
+<text x="182.88" y="27.94" size="5.08" layer="97">Team 11</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0" smashed="yes"/>

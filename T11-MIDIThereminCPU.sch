@@ -17957,8 +17957,8 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <part name="C3" library="capacitor-wima" deviceset="C" device="2,5-3" value="1u"/>
 <part name="IC2" library="74xx-little-us" deviceset="74*1G04" device="DCK" technology="AHC"/>
 <part name="D2" library="diode" deviceset="1N4004" device=""/>
-<part name="U$3" library="adafruit" deviceset="FB" device=""/>
-<part name="U$4" library="adafruit" deviceset="FB" device=""/>
+<part name="U$3" library="adafruit" deviceset="FB" device="" value="1k@100MHz"/>
+<part name="U$4" library="adafruit" deviceset="FB" device="" value="1k@100MHz"/>
 <part name="IC3" library="74xx-little-us" deviceset="74*1G04" device="DCK" technology="AHC"/>
 <part name="R4" library="resistor" deviceset="R-US_" device="0207/10" value="82k"/>
 <part name="SW2" library="adafruit" deviceset="SWITCH_PUSHBUTTON" device="SOFTTOUCHSMD_SJ"/>

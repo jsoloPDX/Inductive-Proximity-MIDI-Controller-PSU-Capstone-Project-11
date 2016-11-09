@@ -17971,12 +17971,12 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <part name="D4" library="diode" deviceset="ZENER-DIODE" device="P1-Z12" value="5V"/>
 <part name="D5" library="diode" deviceset="ZENER-DIODE" device="P1-Z12" value="5V"/>
 <part name="R7" library="resistor" deviceset="R-US_" device="0207/10" value="10"/>
-<part name="R8" library="resistor" deviceset="R-US_" device="0207/10" value="3.9k"/>
-<part name="C7" library="capacitor-wima" deviceset="C" device="2,5-3" value="0.1u"/>
-<part name="R9" library="resistor" deviceset="R-US_" device="0207/10" value="3.9k"/>
-<part name="C8" library="capacitor-wima" deviceset="C" device="2,5-3" value="0.1u"/>
-<part name="R10" library="resistor" deviceset="R-US_" device="0207/10" value="3.9k"/>
-<part name="C9" library="capacitor-wima" deviceset="C" device="2,5-3" value="0.1u"/>
+<part name="R8" library="resistor" deviceset="R-US_" device="0207/10" value="1k"/>
+<part name="C7" library="capacitor-wima" deviceset="C" device="2,5-3" value="100n"/>
+<part name="R9" library="resistor" deviceset="R-US_" device="0207/10" value="1k"/>
+<part name="C8" library="capacitor-wima" deviceset="C" device="2,5-3" value="100n"/>
+<part name="R10" library="resistor" deviceset="R-US_" device="0207/10" value="1k"/>
+<part name="C9" library="capacitor-wima" deviceset="C" device="2,5-3" value="100n"/>
 <part name="LED1" library="adafruit" deviceset="LED" device="B155"/>
 <part name="LED2" library="adafruit" deviceset="LED" device="B155"/>
 <part name="LED3" library="adafruit" deviceset="LED" device="B155"/>

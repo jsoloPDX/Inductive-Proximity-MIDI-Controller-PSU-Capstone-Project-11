@@ -1,4 +1,4 @@
-# -MIDI-THEREMIN-Controller
+# MIDI-THEREMIN-Controller
 A theremin style controller for MIDI devices
 A Senior ECE practicum project for Portland State University
 

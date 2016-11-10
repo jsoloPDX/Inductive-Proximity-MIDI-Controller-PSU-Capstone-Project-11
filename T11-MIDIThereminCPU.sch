@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.6.0">
+<eagle version="7.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -18465,6 +18465,14 @@ Based on the following sources:
 <part name="GND33" library="supply1" deviceset="GND" device=""/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
 <part name="GND35" library="supply1" deviceset="GND" device=""/>
+<part name="C12" library="adafruit" deviceset="C-US" device="C0805" value="0.1u"/>
+<part name="GND36" library="supply1" deviceset="GND" device=""/>
+<part name="C13" library="adafruit" deviceset="C-US" device="C0805" value="0.1u"/>
+<part name="GND37" library="supply1" deviceset="GND" device=""/>
+<part name="C14" library="adafruit" deviceset="C-US" device="C0805" value="0.1u"/>
+<part name="C15" library="adafruit" deviceset="C-US" device="C0805" value="0.1u"/>
+<part name="GND38" library="supply1" deviceset="GND" device=""/>
+<part name="GND39" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18676,6 +18684,14 @@ Based on the following sources:
 <instance part="GND33" gate="1" x="187.96" y="83.82"/>
 <instance part="GND34" gate="1" x="48.26" y="60.96" rot="R270"/>
 <instance part="GND35" gate="1" x="48.26" y="55.88" rot="R270"/>
+<instance part="C12" gate="G$1" x="10.16" y="195.58"/>
+<instance part="GND36" gate="1" x="10.16" y="187.96"/>
+<instance part="C13" gate="G$1" x="7.62" y="182.88" rot="R270"/>
+<instance part="GND37" gate="1" x="2.54" y="180.34"/>
+<instance part="C14" gate="G$1" x="48.26" y="121.92"/>
+<instance part="C15" gate="G$1" x="236.22" y="116.84"/>
+<instance part="GND38" gate="1" x="236.22" y="109.22"/>
+<instance part="GND39" gate="1" x="50.8" y="116.84" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -18940,6 +18956,22 @@ Based on the following sources:
 <pinref part="IC4" gate="D" pin="-IN"/>
 <pinref part="GND35" gate="1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="C12" gate="G$1" pin="2"/>
+<pinref part="GND36" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C13" gate="G$1" pin="2"/>
+<pinref part="GND37" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C15" gate="G$1" pin="2"/>
+<pinref part="GND38" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C14" gate="G$1" pin="2"/>
+<pinref part="GND39" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="MISO" class="0">
 <segment>
@@ -19033,6 +19065,8 @@ Based on the following sources:
 <wire x1="15.24" y1="198.12" x2="10.16" y2="198.12" width="0.1524" layer="91"/>
 <wire x1="10.16" y1="198.12" x2="10.16" y2="203.2" width="0.1524" layer="91"/>
 <pinref part="P+1" gate="1" pin="+5V"/>
+<pinref part="C12" gate="G$1" pin="1"/>
+<junction x="10.16" y="198.12"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="VO"/>
@@ -19052,6 +19086,8 @@ Based on the following sources:
 <pinref part="U1" gate="A" pin="AREF"/>
 <pinref part="P+12" gate="1" pin="+5V"/>
 <wire x1="17.78" y1="182.88" x2="10.16" y2="182.88" width="0.1524" layer="91"/>
+<pinref part="C13" gate="G$1" pin="1"/>
+<junction x="10.16" y="182.88"/>
 </segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
@@ -19065,6 +19101,9 @@ Based on the following sources:
 <segment>
 <pinref part="IC5" gate="P" pin="VDD"/>
 <pinref part="P+5" gate="1" pin="+5V"/>
+<pinref part="C15" gate="G$1" pin="1"/>
+<junction x="236.22" y="119.38"/>
+<pinref part="C15" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="TX" class="0">
@@ -19126,6 +19165,9 @@ Based on the following sources:
 <segment>
 <pinref part="IC4" gate="P" pin="V+"/>
 <pinref part="P+17" gate="1" pin="+12V"/>
+<pinref part="C14" gate="G$1" pin="1"/>
+<junction x="48.26" y="124.46"/>
+<pinref part="C14" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="SIGNAL_OUT_1" class="0">
@@ -19539,6 +19581,7 @@ Based on the following sources:
 <segment>
 <pinref part="U1" gate="A" pin="ADC7"/>
 <wire x1="17.78" y1="187.96" x2="15.24" y2="187.96" width="0.1524" layer="91"/>
+<label x="10.16" y="187.96" size="1.778" layer="95" font="fixed"/>
 <label x="10.16" y="187.96" size="1.778" layer="95" font="fixed"/>
 </segment>
 <segment>

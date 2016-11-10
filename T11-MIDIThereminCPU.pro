@@ -1,25 +1,25 @@
 EAGLE AutoRouter Statistics:
 
-Job           : //khensu/Home06/jsolo/Downloads/T11-MIDIThereminCPU.brd
+Job           : /Users/jamessolonika/GitHub/Inductive-Proximity-MIDI-Controller/T11-MIDIThereminCPU.brd
 
-Start at      : 14:56:44 (11/10/2016)
-End at        : 14:57:26 (11/10/2016)
+Start at      : 15:40:13 (11/10/16)
+End at        : 15:40:55 (11/10/16)
 Elapsed time  : 00:00:41
 
 Signals       :    52   RoutingGrid: 9 mil  Layers: 2
-Connections   :   166   predefined:  75 ( 39 Vias )
+Connections   :   166   predefined:  2 ( 0 Vias )
 
-Router memory :   479440
+Router memory :   495264
 
 Passname          : TopRouter     Route Optimize1 Optimize2 Optimize3 Optimize4 Optimize5 Optimize6 Optimize7 Optimize8 Optimize9Optimize10Optimize11Optimize12
 
-Time per pass     :  00:00:27  00:00:05  00:00:01  00:00:01  00:00:00  00:00:01  00:00:01  00:00:01  00:00:00  00:00:01  00:00:01  00:00:01  00:00:00  00:00:01
-Number of Ripups  :         0        22         0         0         0         0         0         0         0         0         0         0         0         0
-max. Level        :         0         9         0         0         0         0         0         0         0         0         0         0         0         0
-max. Total        :         0        40         0         0         0         0         0         0         0         0         0         0         0         0
+Time per pass     :  00:00:15  00:00:04  00:00:03  00:00:03  00:00:02  00:00:02  00:00:02  00:00:01  00:00:02  00:00:02  00:00:01  00:00:01  00:00:02  00:00:01
+Number of Ripups  :         0         9         0         0         0         0         0         0         0         0         0         0         0         0
+max. Level        :         0         1         0         0         0         0         0         0         0         0         0         0         0         0
+max. Total        :         0        16         0         0         0         0         0         0         0         0         0         0         0         0
 
-Routed            :        22        90        86        88        88        88        88        88        88        88        88        89        89        89
-Vias              :         0        77        69        71        69        68        68        68        65        63        60        58        58        58
-Resolution        :    58.4 %    99.4 %    97.0 %    98.2 %    98.2 %    98.2 %    98.2 %    98.2 %    98.2 %    98.2 %    98.2 %    98.8 %    98.8 %    98.8 %
+Routed            :        62       164       161       162       162       162       163       163       163       163       163       163       163       163
+Vias              :         0        85        92        84        70        66        72        70        69        68        68        68        68        68
+Resolution        :    38.6 %   100.0 %    98.2 %    98.8 %    98.8 %    98.8 %    99.4 %    99.4 %    99.4 %    99.4 %    99.4 %    99.4 %    99.4 %    99.4 %
 
-Final             : 98.8% finished
+Final             : 99.4% finished

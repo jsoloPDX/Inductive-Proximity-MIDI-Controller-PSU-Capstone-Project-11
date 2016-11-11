@@ -6,18 +6,29 @@
 
 void main( void )
 {
-	unsigned char DutyCycle = 50; 
-	unsigned long Frequency = 1000; 
+	// Value between 0-255
+	// 0=0v, 255=5v
+	unsigned char DutyCycle = 256/2; 
 
-	
+	// Prescaler value (1,8,64,256,1024) 
+	// Formula for frequency: f = 16000000/(N*510)
+	// Where N = Frequency value
+	// *** WARNING *** Frequency selection not yet implemented.
+	unsigned long Frequency = 256; 
+
+	PWM_On_PD5(DutyCycle, Frequency);
+	PWM_On_PD6(DutyCycle, Frequency);	
+	PWM_On_PB3(DutyCycle, Frequency); 
+
 	unsigned char i=0; 
 	while(1)
 	{
-		for (i = 0; i <= 100; i++)
+		for (i = 0; i <= 255; i++)
 		{
-			PWM_On_PD5(i, Frequency);
-			PWM_On_PD6(i, Frequency);
-			_delay_ms(200);
+			PWM_Change_PD5(i);
+			PWM_Change_PD6(i);
+			PWM_Change_PB3(i);
+			_delay_ms(100);
 		}
 	}
 }

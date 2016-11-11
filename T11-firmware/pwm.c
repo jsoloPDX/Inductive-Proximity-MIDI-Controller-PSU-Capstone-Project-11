@@ -4,7 +4,30 @@
 	https://sites.google.com/site/qeewiki/books/avr-guide/pwm-on-the-atmega328 
 */ 
 
-void PWM_On_PD5(unsigned char DutyCyclePercent, unsigned long FrequencyHz)
+void PWM_On_PB3(unsigned char DutyCycle, unsigned long FrequencyMode)
+{
+	// Set PB3 port as output (PWM). pg 103
+	DDRB |= (1 << DDB3); 
+
+	// Set duty cycle by setting Timer2 Output Control Register A
+	OCR2A = DutyCycle; 
+
+	/* Set COM2B[1:0] to 0x2 (0b10), so that OC2A is cleared after a Compare Match, 
+	and is set back to BOTTOM (zero). This puts the timer in non-inverting mode. 
+	This is found in section 22.7.3 of the data sheet for the ATMEGA328. */
+	TCCR2A |= (1 << COM2A1) | (0 << COM2A0); 	
+	
+	// Set FastPWM (Mode 3 in Table 22-9) by setting WGM[2:0] = 0b011
+	TCCR2A |= (0 << WGM22) | (1 << WGM21) | (1 << WGM20); 
+
+	/* Set the prescaler value, which also enables the timer. 
+	Table 22-10 in the data sheet explains the values. Setting CA0[2:0] to 
+	0b100, will give a prescaler of 256 and should yield a PWM frequency of 
+	around 244 Hz. PWMFreq = ClockSpeed/(Prescaler*TOP) = 16000000/(256*256) */
+	TCCR2B |= (1 << CS02) | (0 << CS01) | (0 << CS00);
+}
+
+void PWM_On_PD5(unsigned char DutyCycle, unsigned long FrequencyMode)
 {
 	// Set PD5 port as an output
 	DDRD |= (1 << DDD5); 
@@ -13,9 +36,10 @@ void PWM_On_PD5(unsigned char DutyCyclePercent, unsigned long FrequencyHz)
 	For this 8-bit timer, the maximum count will be 255. Therefore the 
 	DutyCyclePercent = (ON_Count/Max_Count)*100. Which means that the 
 	ON_Count = (DutyCyclePercent*Max_Count)/100 */
-	unsigned char ON_Count = (unsigned char)((DutyCyclePercent*Max_Count)/100); 
-	OCR0B = ON_Count; 	
-	
+	//unsigned char ON_Count = (unsigned char)((DutyCyclePercent*Max_Count)/100); 
+	//OCR0B = ON_Count; 	
+	OCR0B = DutyCycle; 	
+
 	/* Set COM0A[1:0] to 0x2 (0b10), so that OC0A is cleared after a Compare Match, 
 	and is set back to BOTTOM (zero). This puts the timer in non-inverting mode. 
 	This is found in section 19.9.1 of the data sheet for the ATMEGA328. */
@@ -32,7 +56,7 @@ void PWM_On_PD5(unsigned char DutyCyclePercent, unsigned long FrequencyHz)
 }
 
 
-void PWM_On_PD6(unsigned char DutyCyclePercent, unsigned long FrequencyHz)
+void PWM_On_PD6(unsigned char DutyCycle, unsigned long FrequencyMode)
 {
 	// Set PD6 port as an output
 	DDRD |= (1 << DDD6); 
@@ -41,9 +65,10 @@ void PWM_On_PD6(unsigned char DutyCyclePercent, unsigned long FrequencyHz)
 	For this 8-bit timer, the maximum count will be 255. Therefore the 
 	DutyCyclePercent = (ON_Count/Max_Count)*100. Which means that the 
 	ON_Count = (DutyCyclePercent*Max_Count)/100 */
-	unsigned char ON_Count = (unsigned char)((DutyCyclePercent*Max_Count)/100 + 0.5); 
-	OCR0A = ON_Count; 	
-	
+	//unsigned char ON_Count = (unsigned char)((DutyCyclePercent*Max_Count)/100 + 0.5); 
+	//OCR0A = ON_Count; 	
+	OCR0A = DutyCycle; 	
+
 	/* Set COM0A[1:0] to 0x2 (0b10), so that OC0A is cleared after a Compare Match, 
 	and is set back to BOTTOM (zero). This puts the timer in non-inverting mode. 
 	This is found in section 19.9.1 of the data sheet for the ATMEGA328. */
@@ -59,3 +84,43 @@ void PWM_On_PD6(unsigned char DutyCyclePercent, unsigned long FrequencyHz)
 	TCCR0B |= (1 << CS02) | (0 << CS01) | (0 << CS00);
 }
 
+
+void PWM_Change_PB3(unsigned char DutyCycle)
+{
+	// Check to see whether output is enabled. If it is, set duty cycle.
+	// If not, enable PWM with requested DutyCycle and with a default frequency.
+	if (DDRB & (1 << DDB3))
+	{
+		// Set duty cycle by setting Timer2 Output Control Register A
+		OCR2A = DutyCycle; 
+	}else{
+		PWM_On_PB3(DutyCycle,256);
+	}
+}
+
+void PWM_Change_PD5(unsigned char DutyCycle)
+{
+	// Check to see whether output is enabled. If it is, set duty cycle.
+	// If not, enable PWM with requested DutyCycle and with a default frequency.
+	if (DDRD & (1 << DDD5))
+	{
+		// Set duty cycle by setting Timer2 Output Control Register A
+		OCR0B = DutyCycle; 
+	}else{
+		PWM_On_PD5(DutyCycle,256);
+	}
+}
+
+
+void PWM_Change_PD6(unsigned char DutyCycle)
+{
+	// Check to see whether output is enabled. If it is, set duty cycle.
+	// If not, enable PWM with requested DutyCycle and with a default frequency.
+	if (DDRD & (1 << DDD6))
+	{
+		// Set duty cycle by setting Timer2 Output Control Register A
+		OCR0A = DutyCycle; 
+	}else{
+		PWM_On_PD6(DutyCycle,256);
+	}
+}

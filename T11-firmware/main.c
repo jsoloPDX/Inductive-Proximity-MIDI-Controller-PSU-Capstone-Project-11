@@ -13,12 +13,10 @@ void main( void )
 	// Prescaler value (1,8,64,256,1024) 
 	// Formula for frequency: f = 16000000/(N*510)
 	// Where N = Frequency value
-	// *** WARNING *** Frequency selection not yet implemented.
-	unsigned long Frequency = 256; 
 
-	PWM_On_PD5(DutyCycle, Frequency);
-	PWM_On_PD6(DutyCycle, Frequency);	
-	PWM_On_PB3(DutyCycle, Frequency); 
+	PWM_On_PD5(DutyCycle);
+	PWM_On_PD6(DutyCycle);	
+	PWM_On_PB3(DutyCycle); 
 
 	unsigned char i=0; 
 	while(1)

@@ -4,7 +4,19 @@
 	https://sites.google.com/site/qeewiki/books/avr-guide/pwm-on-the-atmega328 
 */ 
 
-void PWM_On_PB3(unsigned char DutyCycle, unsigned long FrequencyMode)
+// Prescaler value (1,8,64,256,1024) 
+//#define PS_1 1
+//#define PS_8 2  //Gives 8 kHz
+//#define PS_64 4  //Gives 240 Hz
+//#define PS_256 6
+//#define PS_1024 7
+//#define PS_Default 6
+
+#define PS_B2 0
+#define PS_B1 1
+#define PS_B0 0
+
+void PWM_On_PB3(unsigned char DutyCycle)
 {
 	// Set PB3 port as output (PWM). pg 103
 	DDRB |= (1 << DDB3); 
@@ -24,10 +36,11 @@ void PWM_On_PB3(unsigned char DutyCycle, unsigned long FrequencyMode)
 	Table 22-10 in the data sheet explains the values. Setting CA0[2:0] to 
 	0b100, will give a prescaler of 256 and should yield a PWM frequency of 
 	around 244 Hz. PWMFreq = ClockSpeed/(Prescaler*TOP) = 16000000/(256*256) */
-	TCCR2B |= (1 << CS02) | (0 << CS01) | (0 << CS00);
+	TCCR2B |= (PS_B2 << CS02) | (PS_B1 << CS01) | (PS_B0 << CS00);
+
 }
 
-void PWM_On_PD5(unsigned char DutyCycle, unsigned long FrequencyMode)
+void PWM_On_PD5(unsigned char DutyCycle)
 {
 	// Set PD5 port as an output
 	DDRD |= (1 << DDD5); 
@@ -52,11 +65,11 @@ void PWM_On_PD5(unsigned char DutyCycle, unsigned long FrequencyMode)
 	Table 19-10 in the data sheet explains the values. Setting CA0[2:0] to 
 	0b100, will give a prescaler of 256 and should yield a PWM frequency of 
 	around 244 Hz. PWMFreq = ClockSpeed/(Prescaler*TOP) = 16000000/(256*256) */
-	TCCR0B |= (1 << CS02) | (0 << CS01) | (0 << CS00);
+	TCCR0B |= (PS_B2 << CS02) | (PS_B1 << CS01) | (PS_B0 << CS00);
 }
 
 
-void PWM_On_PD6(unsigned char DutyCycle, unsigned long FrequencyMode)
+void PWM_On_PD6(unsigned char DutyCycle)
 {
 	// Set PD6 port as an output
 	DDRD |= (1 << DDD6); 
@@ -81,7 +94,7 @@ void PWM_On_PD6(unsigned char DutyCycle, unsigned long FrequencyMode)
 	Table 19-10 in the data sheet explains the values. Setting CA0[2:0] to 
 	0b100, will give a prescaler of 256 and should yield a PWM frequency of 
 	around 244 Hz. PWMFreq = ClockSpeed/(Prescaler*TOP) = 16000000/(256*256) */
-	TCCR0B |= (1 << CS02) | (0 << CS01) | (0 << CS00);
+	TCCR0B |= (PS_B2 << CS02) | (PS_B1 << CS01) | (PS_B0 << CS00);
 }
 
 
@@ -94,7 +107,7 @@ void PWM_Change_PB3(unsigned char DutyCycle)
 		// Set duty cycle by setting Timer2 Output Control Register A
 		OCR2A = DutyCycle; 
 	}else{
-		PWM_On_PB3(DutyCycle,256);
+		PWM_On_PB3(DutyCycle);
 	}
 }
 
@@ -107,7 +120,7 @@ void PWM_Change_PD5(unsigned char DutyCycle)
 		// Set duty cycle by setting Timer2 Output Control Register A
 		OCR0B = DutyCycle; 
 	}else{
-		PWM_On_PD5(DutyCycle,256);
+		PWM_On_PD5(DutyCycle);
 	}
 }
 
@@ -121,6 +134,6 @@ void PWM_Change_PD6(unsigned char DutyCycle)
 		// Set duty cycle by setting Timer2 Output Control Register A
 		OCR0A = DutyCycle; 
 	}else{
-		PWM_On_PD6(DutyCycle,256);
+		PWM_On_PD6(DutyCycle);
 	}
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -2184,12 +2184,18 @@ Please make sure your boards conform to these design rules.</description>
 <element name="C5" library="adafruit" package="C0805" value="0.33u" x="54.2925" y="50.4825" rot="R180"/>
 <element name="C6" library="adafruit" package="C0805" value="0.1u" x="49.8475" y="50.4825"/>
 <element name="D1" library="diode" package="DO35-7" value="5V" x="23.495" y="6.6675" rot="R270"/>
-<element name="D2" library="diode" package="DO35-7" value="1N4148DO35-7" x="13.0175" y="30.7975" rot="R180"/>
-<element name="D3" library="diode" package="DO35-7" value="1N4148DO35-7" x="13.0175" y="33.9725" rot="R180"/>
+<element name="D2" library="diode" package="DO35-7" value="0.7v Drop" x="13.0175" y="30.7975" rot="R180"/>
+<element name="D3" library="diode" package="DO35-7" value="0.7v Drop" x="13.0175" y="33.9725" rot="R180"/>
 <element name="D4" library="diode" package="DO35-7" value="5V" x="71.4375" y="6.6675" rot="R270"/>
 <element name="D5" library="diode" package="DO35-7" value="5V" x="47.625" y="6.6675" rot="R270"/>
-<element name="IC1" library="linear" package="SOT223" value="UA78M05DCY" x="52.07" y="44.7675" rot="R180"/>
-<element name="IC5" library="40xx" package="SO14" value="4069D" x="22.5425" y="26.9875" rot="R270"/>
+<element name="IC1" library="linear" package="SOT223" value="UA78M05DCY" x="52.07" y="44.7675" rot="R180">
+<attribute name="DIGIKEYNUMBER" value="296-12290-1-ND" x="52.07" y="44.7675" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="PARTNUMBER" value="UA78M05CDCYR" x="52.07" y="44.7675" size="1.778" layer="27" rot="R180" display="off"/>
+</element>
+<element name="IC5" library="40xx" package="SO14" value="4069D" x="22.5425" y="26.9875" rot="R270">
+<attribute name="DIGIKEYNUMBER" value="296-28484-1-ND" x="22.5425" y="26.9875" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="PARTNUMBER" value="SN7414DR" x="22.5425" y="26.9875" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
 <element name="J1" library="con-jack" package="DCJ0202" value="DCJ0202" x="67.6275" y="52.3875" rot="R180">
 <attribute name="MF" value="" x="67.6275" y="52.3875" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="67.6275" y="52.3875" size="1.778" layer="27" rot="R180" display="off"/>

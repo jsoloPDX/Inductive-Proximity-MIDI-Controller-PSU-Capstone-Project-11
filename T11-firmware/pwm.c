@@ -12,8 +12,8 @@
 //#define PS_1024 7
 //#define PS_Default 6
 
-#define PS_B2 1
-#define PS_B1 0
+#define PS_B2 0
+#define PS_B1 1
 #define PS_B0 0
 
 void PWM_On_PB3(unsigned char DutyCycle)

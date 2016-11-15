@@ -6,14 +6,14 @@
 
 // Prescaler value (1,8,64,256,1024) 
 //#define PS_1 1
-//#define PS_8 2  //Gives 8 kHz
-//#define PS_64 4  //Gives 240 Hz
-//#define PS_256 6
+//#define PS_8 2  //Gives 8 kHz   	(PS_B2 = 0, PS_B1 = 1, PS_B0 = 0)
+//#define PS_64 4  //Gives 240 Hz 	(PS_B2 = 1, PS_B1 = 0, PS_B0 = 0)
+//#define PS_256 6 //			 (PS_B2 = 1, PS_B1 = 1, PS_B0 = 0)
 //#define PS_1024 7
 //#define PS_Default 6
 
-#define PS_B2 0
-#define PS_B1 1
+#define PS_B2 1
+#define PS_B1 0
 #define PS_B0 0
 
 void PWM_On_PB3(unsigned char DutyCycle)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -8,20 +8,20 @@
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
-<layer number="20" name="Dimension" color="15" fill="1" visible="no" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -30,8 +30,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -39,19 +39,19 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
-<layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
-<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
-<layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
-<layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
-<layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
-<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
+<layer number="50" name="dxf" color="7" fill="1" visible="yes" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="yes" active="no"/>
+<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="yes" active="no"/>
+<layer number="56" name="wert" color="7" fill="1" visible="yes" active="no"/>
+<layer number="57" name="tCAD" color="7" fill="1" visible="yes" active="no"/>
+<layer number="59" name="tCarbon" color="7" fill="1" visible="yes" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="yes" active="no"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
@@ -15234,7 +15234,7 @@ Based on the following sources:
 <part name="GND37" library="supply1" deviceset="GND" device=""/>
 <part name="C15" library="adafruit" deviceset="C-US" device="C0805" value="0.1u"/>
 <part name="GND38" library="supply1" deviceset="GND" device=""/>
-<part name="FRAME2" library="frames" deviceset="A3L-LOC" device="" value="Frame"/>
+<part name="FRAME2" library="frames" deviceset="A3L-LOC" device=""/>
 <part name="C7" library="adafruit" deviceset="CPOL-US" device="E3.5-8" value="100uF"/>
 <part name="C10" library="adafruit" deviceset="CPOL-US" device="E3.5-8" value="100uF"/>
 <part name="C8" library="adafruit" deviceset="CPOL-US" device="E3.5-8" value="100uF"/>
@@ -15278,17 +15278,16 @@ Based on the following sources:
 <wire x1="148.59" y1="247.65" x2="82.55" y2="247.65" width="0.1524" layer="95"/>
 <wire x1="82.55" y1="247.65" x2="82.55" y2="209.55" width="0.1524" layer="95"/>
 <text x="82.55" y="247.65" size="2.54" layer="94" font="fixed">Test point header</text>
-<text x="302.26" y="15.24" size="5.08" layer="97">Team 11</text>
+<text x="304.8" y="10.16" size="5.08" layer="97">Team 11</text>
 <wire x1="193.04" y1="203.2" x2="193.04" y2="182.88" width="0.1524" layer="96"/>
 <wire x1="193.04" y1="182.88" x2="154.94" y2="182.88" width="0.1524" layer="96"/>
 <wire x1="154.94" y1="182.88" x2="154.94" y2="203.2" width="0.1524" layer="96"/>
 <wire x1="154.94" y1="203.2" x2="193.04" y2="203.2" width="0.1524" layer="96"/>
 <text x="323.85" y="238.76" size="1.778" layer="94">12-5V DC-DC regulator</text>
 <text x="177.8" y="170.18" size="1.778" layer="96">Microcontroller</text>
-<text x="227.33" y="6.35" size="1.778" layer="97">NC Inverter pins</text>
+<text x="214.63" y="3.81" size="1.778" layer="91">NC Inverter pins</text>
 <text x="55.88" y="109.22" size="1.778" layer="94">SENSOR CONNECTOR 2</text>
 <text x="55.88" y="149.86" size="1.778" layer="94">SENSOR CONNECTOR 3</text>
-<text x="297.18" y="7.62" size="2.54" layer="97">Rev. 0.90   -   11/16/2016</text>
 </plain>
 <instances>
 <instance part="U1" gate="A" x="177.8" y="139.7"/>
@@ -16114,10 +16113,11 @@ Based on the following sources:
 <segment>
 <pinref part="R13" gate="G$1" pin="1"/>
 <wire x1="217.17" y1="132.08" x2="198.12" y2="132.08" width="0.1524" layer="91"/>
+</segment>
+<segment>
 <pinref part="U1" gate="A" pin="PD4"/>
 <wire x1="195.58" y1="132.08" x2="198.12" y2="132.08" width="0.1524" layer="91"/>
 <label x="198.12" y="132.08" size="1.778" layer="95"/>
-<junction x="198.12" y="132.08"/>
 </segment>
 </net>
 <net name="LED_2" class="0">
@@ -16223,25 +16223,27 @@ Based on the following sources:
 </sheet>
 </sheets>
 <errors>
-<approved hash="101,1,267.97,30.48,IC5C,O,,,,"/>
-<approved hash="101,1,234.95,27.94,IC5D,O,,,,"/>
-<approved hash="101,1,267.97,16.51,IC5E,O,,,,"/>
-<approved hash="101,1,234.95,15.24,IC5B,O,,,,"/>
-<approved hash="104,1,160.02,162.56,U1,VCC_2,+5V,,,"/>
-<approved hash="104,1,160.02,160.02,U1,VCC,+5V,,,"/>
-<approved hash="104,1,160.02,157.48,U1,AVCC,+5V,,,"/>
-<approved hash="104,1,373.38,215.9,IC5P,VSS,GND,,,"/>
-<approved hash="104,1,373.38,231.14,IC5P,VDD,+5V,,,"/>
-<approved hash="113,1,173.948,194.441,JP1,,,,,"/>
-<approved hash="113,1,303.945,160.02,SW1,,,,,"/>
-<approved hash="113,1,306.485,121.92,SW2,,,,,"/>
-<approved hash="113,1,227.652,128.27,LED1,,,,,"/>
-<approved hash="113,1,208.602,120.65,LED2,,,,,"/>
-<approved hash="113,1,122.242,135.89,LED3,,,,,"/>
-<approved hash="113,1,132.402,133.35,LED4,,,,,"/>
-<approved hash="113,1,142.562,130.81,LED5,,,,,"/>
-<approved hash="113,1,102.633,227.199,JP4,,,,,"/>
-<approved hash="113,1,192.909,26.9071,JP2,,,,,"/>
+<approved hash="101,1,187.96,137.16,IC5C,O,,,,"/>
+<approved hash="101,1,187.96,106.68,IC5D,O,,,,"/>
+<approved hash="101,1,175.26,137.16,IC5E,O,,,,"/>
+<approved hash="101,1,175.26,106.68,IC5F,O,,,,"/>
+<approved hash="104,1,17.78,200.66,U1,VCC_2,+5V,,,"/>
+<approved hash="104,1,17.78,198.12,U1,VCC,+5V,,,"/>
+<approved hash="104,1,17.78,195.58,U1,AVCC,+5V,,,"/>
+<approved hash="104,1,48.26,124.46,IC4P,V+,+12V,,,"/>
+<approved hash="104,1,63.5,124.46,IC4P,V-,GND,,,"/>
+<approved hash="104,1,251.46,119.38,IC5P,VSS,GND,,,"/>
+<approved hash="104,1,236.22,119.38,IC5P,VDD,+5V,,,"/>
+<approved hash="113,1,168.868,153.801,JP1,,,,,"/>
+<approved hash="113,1,204.055,96.52,SW1,,,,,"/>
+<approved hash="113,1,204.055,132.08,SW2,,,,,"/>
+<approved hash="113,1,129.218,191.77,LED1,,,,,"/>
+<approved hash="113,1,144.458,191.77,LED2,,,,,"/>
+<approved hash="113,1,159.698,191.77,LED3,,,,,"/>
+<approved hash="113,1,174.938,191.77,LED4,,,,,"/>
+<approved hash="113,1,190.178,191.77,LED5,,,,,"/>
+<approved hash="113,1,121.789,157.717,JP2,,,,,"/>
+<approved hash="113,1,228.469,63.7371,JP3,,,,,"/>
 </errors>
 </schematic>
 </drawing>

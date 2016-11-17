@@ -1757,6 +1757,21 @@ In this library the device names are the same as the pin names of the symbols, t
 <rectangle x1="2.159" y1="-5.461" x2="2.921" y2="-4.699" layer="21"/>
 <rectangle x1="2.159" y1="-4.699" x2="2.921" y2="-2.921" layer="51"/>
 </package>
+<package name="1X01">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
+<pad name="1" x="0" y="0" drill="1.016" shape="octagon"/>
+<text x="-1.3462" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PINH2X3">
@@ -1772,6 +1787,15 @@ In this library the device names are the same as the pin names of the symbols, t
 <pin name="4" x="5.08" y="0" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
 <pin name="5" x="-2.54" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="6" x="5.08" y="-2.54" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
+</symbol>
+<symbol name="PINHD1">
+<wire x1="-6.35" y1="-2.54" x2="1.27" y2="-2.54" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="1.27" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="1.27" y1="2.54" x2="-6.35" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="-6.35" y1="2.54" x2="-6.35" y2="-2.54" width="0.4064" layer="94"/>
+<text x="-6.35" y="3.175" size="1.778" layer="95">&gt;NAME</text>
+<text x="-6.35" y="-5.08" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -1802,6 +1826,22 @@ In this library the device names are the same as the pin names of the symbols, t
 <connect gate="A" pin="4" pad="4"/>
 <connect gate="A" pin="5" pad="5"/>
 <connect gate="A" pin="6" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PINHD-1X1" prefix="JP" uservalue="yes">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="PINHD1" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="1X01">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8883,29 +8923,6 @@ Metric Code Size 5664</description>
 <rectangle x1="-2.8" y1="-3.15" x2="-2.2" y2="3.15" layer="51"/>
 <rectangle x1="2.2" y1="-3.15" x2="2.8" y2="3.15" layer="51"/>
 </package>
-<package name="1X01">
-<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
-<pad name="1" x="0" y="0" drill="1.016" diameter="1.9304" shape="octagon"/>
-<text x="-1.3462" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
-</package>
-<package name="1X01-CLEANBIG">
-<pad name="1" x="0" y="0" drill="1.016" diameter="1.778"/>
-<text x="-1.3462" y="1.8288" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
-</package>
-<package name="1X1-BIGPOGO">
-<pad name="P$1" x="0" y="0" drill="1.4" diameter="2.54" shape="long"/>
-</package>
 </packages>
 <symbols>
 <symbol name="MT">
@@ -9017,15 +9034,6 @@ Metric Code Size 5664</description>
 <text x="1.016" y="-4.191" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="1" x="0" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
 <pin name="2" x="0" y="-5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
-</symbol>
-<symbol name="PINHD1">
-<wire x1="-6.35" y1="-2.54" x2="1.27" y2="-2.54" width="0.4064" layer="94"/>
-<wire x1="1.27" y1="-2.54" x2="1.27" y2="2.54" width="0.4064" layer="94"/>
-<wire x1="1.27" y1="2.54" x2="-6.35" y2="2.54" width="0.4064" layer="94"/>
-<wire x1="-6.35" y1="2.54" x2="-6.35" y2="-2.54" width="0.4064" layer="94"/>
-<text x="-6.35" y="3.175" size="1.778" layer="95">&gt;NAME</text>
-<text x="-6.35" y="-5.08" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="1" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -11391,40 +11399,6 @@ Source: http://www.osram.convergy.de/</description>
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="PINHD-1X1" prefix="JP" uservalue="yes">
-<description>&lt;b&gt;Pin header 1x1 for 0.1" spacing&lt;/b&gt;
-&lt;p&gt;
-With round pins</description>
-<gates>
-<gate name="G$1" symbol="PINHD1" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="1X01">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="CB" package="1X01-CLEANBIG">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="-BIGPOGO" package="1X1-BIGPOGO">
-<connects>
-<connect gate="G$1" pin="1" pad="P$1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -15133,8 +15107,12 @@ high speed (Philips)</description>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
 <part name="GND28" library="supply1" deviceset="GND" device=""/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
-<part name="JP4" library="adafruit" deviceset="PINHD-1X1" device=""/>
+<part name="JP4" library="pinhead" deviceset="PINHD-1X1" device=""/>
 <part name="JP3" library="adafruit" deviceset="PINHD-1X6" device=""/>
+<part name="JP5" library="pinhead" deviceset="PINHD-1X1" device=""/>
+<part name="JP6" library="pinhead" deviceset="PINHD-1X1" device=""/>
+<part name="JP7" library="pinhead" deviceset="PINHD-1X1" device=""/>
+<part name="JP8" library="pinhead" deviceset="PINHD-1X1" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15294,6 +15272,10 @@ high speed (Philips)</description>
 <instance part="GND29" gate="1" x="227.33" y="121.92"/>
 <instance part="JP4" gate="G$1" x="100.33" y="240.03" rot="R180"/>
 <instance part="JP3" gate="A" x="100.33" y="229.87" rot="R180"/>
+<instance part="JP5" gate="G$1" x="265.43" y="165.1"/>
+<instance part="JP6" gate="G$1" x="265.43" y="154.94"/>
+<instance part="JP7" gate="G$1" x="265.43" y="132.08"/>
+<instance part="JP8" gate="G$1" x="264.16" y="116.84"/>
 </instances>
 <busses>
 </busses>
@@ -15390,11 +15372,17 @@ high speed (Philips)</description>
 <pinref part="SW1" gate="G$1" pin="P$1"/>
 <wire x1="254" y1="154.94" x2="254" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="GND4" gate="1" pin="GND"/>
+<pinref part="JP6" gate="G$1" pin="1"/>
+<wire x1="262.89" y1="154.94" x2="254" y2="154.94" width="0.1524" layer="91"/>
+<junction x="254" y="154.94"/>
 </segment>
 <segment>
 <pinref part="SW2" gate="G$1" pin="P$1"/>
 <wire x1="254" y1="116.84" x2="254" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="GND3" gate="1" pin="GND"/>
+<pinref part="JP8" gate="G$1" pin="1"/>
+<wire x1="261.62" y1="116.84" x2="254" y2="116.84" width="0.1524" layer="91"/>
+<junction x="254" y="116.84"/>
 </segment>
 <segment>
 <pinref part="S_JACK_2" gate="G$1" pin="2"/>
@@ -15716,6 +15704,8 @@ high speed (Philips)</description>
 <wire x1="254" y1="167.64" x2="254" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="246.38" y1="165.1" x2="254" y2="165.1" width="0.1524" layer="91"/>
 <junction x="254" y="165.1"/>
+<pinref part="JP5" gate="G$1" pin="1"/>
+<wire x1="262.89" y1="165.1" x2="254" y2="165.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -15754,6 +15744,9 @@ high speed (Philips)</description>
 <wire x1="254" y1="129.54" x2="254" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="246.38" y1="129.54" x2="254" y2="129.54" width="0.1524" layer="91"/>
 <junction x="254" y="129.54"/>
+<pinref part="JP7" gate="G$1" pin="1"/>
+<wire x1="262.89" y1="132.08" x2="254" y2="132.08" width="0.1524" layer="91"/>
+<junction x="254" y="132.08"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -16010,18 +16003,12 @@ high speed (Philips)</description>
 </sheet>
 </sheets>
 <errors>
-<approved hash="101,1,267.97,30.48,IC5C,O,,,,"/>
-<approved hash="101,1,234.95,27.94,IC5D,O,,,,"/>
-<approved hash="101,1,267.97,16.51,IC5E,O,,,,"/>
-<approved hash="101,1,234.95,15.24,IC5B,O,,,,"/>
 <approved hash="104,1,160.02,162.56,U1,VCC_2,+5V,,,"/>
 <approved hash="104,1,160.02,160.02,U1,VCC,+5V,,,"/>
 <approved hash="104,1,160.02,157.48,U1,AVCC,+5V,,,"/>
-<approved hash="104,1,373.38,215.9,IC5P,VSS,GND,,,"/>
-<approved hash="104,1,373.38,231.14,IC5P,VDD,+5V,,,"/>
 <approved hash="113,1,173.948,194.441,JP1,,,,,"/>
-<approved hash="113,1,303.945,160.02,SW1,,,,,"/>
-<approved hash="113,1,306.485,121.92,SW2,,,,,"/>
+<approved hash="113,1,255.685,160.02,SW1,,,,,"/>
+<approved hash="113,1,255.685,121.92,SW2,,,,,"/>
 <approved hash="113,1,227.652,128.27,LED1,,,,,"/>
 <approved hash="113,1,208.602,120.65,LED2,,,,,"/>
 <approved hash="113,1,122.242,135.89,LED3,,,,,"/>
@@ -16031,7 +16018,10 @@ high speed (Philips)</description>
 <approved hash="113,1,192.909,26.9071,JP2,,,,,"/>
 <approved hash="113,1,102.633,238.629,JP4,,,,,"/>
 <approved hash="113,1,102.633,227.199,JP3,,,,,"/>
-<approved hash="115,1,24.13,161.29,MOSI_PWM,,,,,"/>
+<approved hash="113,1,263.127,166.501,JP5,,,,,"/>
+<approved hash="113,1,263.127,156.341,JP6,,,,,"/>
+<approved hash="113,1,263.127,133.481,JP7,,,,,"/>
+<approved hash="113,1,261.857,118.241,JP8,,,,,"/>
 </errors>
 </schematic>
 </drawing>

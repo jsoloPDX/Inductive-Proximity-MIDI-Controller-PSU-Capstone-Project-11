@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -18990,7 +18990,7 @@ A modification of conn-hirshman:MAB5SH with two options for the grounding 'teeth
 <part name="SUPPLY17" library="supply2" deviceset="GND" device=""/>
 <part name="P+3" library="supply1" deviceset="V+" device=""/>
 <part name="P-2" library="supply1" deviceset="V-" device=""/>
-<part name="C21" library="resistor" deviceset="C-EU" device="050-025X075" value="2200pF"/>
+<part name="C21" library="resistor" deviceset="C-EU" device="050-025X075" value="3900pF"/>
 <part name="R31" library="rcl" deviceset="R-US_" device="0411/3V" value="100k"/>
 <part name="R32" library="rcl" deviceset="R-US_" device="0411/3V" value="100k"/>
 <part name="R33" library="rcl" deviceset="R-US_" device="0411/3V" value="10k"/>
@@ -19014,7 +19014,7 @@ A modification of conn-hirshman:MAB5SH with two options for the grounding 'teeth
 <part name="LM2917_6" library="pinhead" deviceset="PINHD-1X1" device=""/>
 <part name="LM2917_7" library="pinhead" deviceset="PINHD-1X1" device=""/>
 <part name="LM2917_8" library="pinhead" deviceset="PINHD-1X1" device=""/>
-<part name="VOUT" library="pinhead" deviceset="PINHD-1X1" device=""/>
+<part name="PROXIMITY" library="pinhead" deviceset="PINHD-1X1" device=""/>
 <part name="C27" library="resistor" deviceset="CPOL-US" device="E2.5-7" value="1uF"/>
 <part name="C23" library="resistor" deviceset="CPOL-US" device="E2.5-7" value="10uF"/>
 <part name="C22" library="resistor" deviceset="CPOL-US" device="E2.5-7" value="10uF"/>
@@ -19040,13 +19040,13 @@ A modification of conn-hirshman:MAB5SH with two options for the grounding 'teeth
 <part name="C29" library="resistor" deviceset="C-EU" device="050-025X075" value="tune"/>
 <part name="C30" library="resistor" deviceset="C-EU" device="050-025X075" value="tune"/>
 <part name="C31" library="resistor" deviceset="C-EU" device="050-025X075" value="tune"/>
-<part name="U$1" library="adafruit" deviceset="MIDIJACK" device=""/>
+<part name="S_JACK" library="adafruit" deviceset="MIDIJACK" device=""/>
 <part name="P-1" library="supply1" deviceset="V-" device=""/>
 <part name="SUPPLY22" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY23" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY24" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY25" library="supply2" deviceset="GND" device=""/>
-<part name="C32" library="resistor" deviceset="C-EU" device="050-025X075" value="2200pF"/>
+<part name="C32" library="resistor" deviceset="C-EU" device="050-025X075" value="3900pF"/>
 <part name="L3" library="resistor" deviceset="L-US" device="0207/5V" value="100uH"/>
 <part name="L1" library="resistor" deviceset="L-US" device="0207/5V" value="2.5mH"/>
 <part name="L2" library="resistor" deviceset="L-US" device="0207/5V" value="100uH"/>
@@ -19221,7 +19221,7 @@ OUTPUT(0 to +5vDC)</text>
 <attribute name="VALUE" x="215.011" y="102.616" size="1.778" layer="96" rot="R270"/>
 </instance>
 <instance part="R31" gate="G$1" x="208.28" y="106.68" rot="R90"/>
-<instance part="R32" gate="G$1" x="231.14" y="106.68" rot="R90"/>
+<instance part="R32" gate="G$1" x="228.6" y="106.68" rot="R90"/>
 <instance part="R33" gate="G$1" x="246.38" y="109.22" rot="R90"/>
 <instance part="R35" gate="G$1" x="218.44" y="157.48" rot="R270"/>
 <instance part="P+4" gate="1" x="223.52" y="165.1"/>
@@ -19244,7 +19244,7 @@ OUTPUT(0 to +5vDC)</text>
 <instance part="LM2917_6" gate="G$1" x="218.44" y="142.24" rot="R270"/>
 <instance part="LM2917_7" gate="G$1" x="213.36" y="142.24" rot="R270"/>
 <instance part="LM2917_8" gate="G$1" x="208.28" y="142.24" rot="R270"/>
-<instance part="VOUT" gate="G$1" x="297.18" y="132.08"/>
+<instance part="PROXIMITY" gate="G$1" x="297.18" y="132.08"/>
 <instance part="C27" gate="G$1" x="238.76" y="106.68" rot="MR0"/>
 <instance part="C23" gate="G$1" x="200.66" y="119.38" rot="MR270"/>
 <instance part="C22" gate="G$1" x="214.63" y="152.4" rot="MR90"/>
@@ -19273,12 +19273,12 @@ OUTPUT(0 to +5vDC)</text>
 <instance part="C29" gate="G$1" x="157.48" y="210.82"/>
 <instance part="C30" gate="G$1" x="85.09" y="209.55"/>
 <instance part="C31" gate="G$1" x="78.74" y="215.9"/>
-<instance part="U$1" gate="G$1" x="356.87" y="137.16"/>
+<instance part="S_JACK" gate="G$1" x="356.87" y="137.16"/>
 <instance part="P-1" gate="1" x="382.27" y="129.54"/>
-<instance part="U$1" gate="G$2" x="345.44" y="120.65" rot="R180"/>
-<instance part="U$1" gate="G$3" x="365.76" y="120.65"/>
-<instance part="U$1" gate="G$4" x="345.44" y="116.84" rot="R180"/>
-<instance part="U$1" gate="G$5" x="365.76" y="116.84"/>
+<instance part="S_JACK" gate="G$2" x="345.44" y="120.65" rot="R180"/>
+<instance part="S_JACK" gate="G$3" x="365.76" y="120.65"/>
+<instance part="S_JACK" gate="G$4" x="345.44" y="116.84" rot="R180"/>
+<instance part="S_JACK" gate="G$5" x="365.76" y="116.84"/>
 <instance part="SUPPLY22" gate="GND" x="361.95" y="114.3"/>
 <instance part="SUPPLY23" gate="GND" x="349.25" y="114.3"/>
 <instance part="SUPPLY24" gate="GND" x="349.25" y="118.11"/>
@@ -19351,7 +19351,7 @@ OUTPUT(0 to +5vDC)</text>
 <pinref part="P+9" gate="1" pin="V+"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="3"/>
+<pinref part="S_JACK" gate="G$1" pin="3"/>
 <wire x1="341.63" y1="137.16" x2="331.47" y2="137.16" width="0.1524" layer="91"/>
 <label x="332.74" y="138.43" size="1.778" layer="95"/>
 </segment>
@@ -19400,13 +19400,13 @@ OUTPUT(0 to +5vDC)</text>
 <pinref part="R31" gate="G$1" pin="1"/>
 <pinref part="R32" gate="G$1" pin="1"/>
 <wire x1="208.28" y1="101.6" x2="213.36" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="101.6" x2="218.44" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="101.6" x2="218.44" y2="101.6" width="0.1524" layer="91"/>
 <junction x="213.36" y="101.6"/>
 <junction x="208.28" y="101.6"/>
-<junction x="231.14" y="101.6"/>
+<junction x="228.6" y="101.6"/>
 <wire x1="218.44" y1="101.6" x2="213.36" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="101.6" x2="213.36" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="101.6" x2="238.76" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="101.6" x2="238.76" y2="101.6" width="0.1524" layer="91"/>
 <junction x="238.76" y="101.6"/>
 <wire x1="238.76" y1="101.6" x2="246.38" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="R33" gate="G$1" pin="1"/>
@@ -19421,7 +19421,7 @@ OUTPUT(0 to +5vDC)</text>
 <junction x="218.44" y="101.6"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="2"/>
+<pinref part="S_JACK" gate="G$1" pin="2"/>
 <wire x1="372.11" y1="132.08" x2="382.27" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="P-1" gate="1" pin="V-"/>
 <label x="374.65" y="132.08" size="1.778" layer="95"/>
@@ -19521,22 +19521,22 @@ OUTPUT(0 to +5vDC)</text>
 <pinref part="SUPPLY16" gate="GND" pin="GND"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$2" pin="MT"/>
+<pinref part="S_JACK" gate="G$2" pin="MT"/>
 <pinref part="SUPPLY24" gate="GND" pin="GND"/>
 <wire x1="345.44" y1="120.65" x2="349.25" y2="120.65" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$4" pin="MT"/>
+<pinref part="S_JACK" gate="G$4" pin="MT"/>
 <pinref part="SUPPLY23" gate="GND" pin="GND"/>
 <wire x1="345.44" y1="116.84" x2="349.25" y2="116.84" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$3" pin="MT"/>
+<pinref part="S_JACK" gate="G$3" pin="MT"/>
 <pinref part="SUPPLY25" gate="GND" pin="GND"/>
 <wire x1="365.76" y1="120.65" x2="361.95" y2="120.65" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$5" pin="MT"/>
+<pinref part="S_JACK" gate="G$5" pin="MT"/>
 <pinref part="SUPPLY22" gate="GND" pin="GND"/>
 <wire x1="365.76" y1="116.84" x2="361.95" y2="116.84" width="0.1524" layer="91"/>
 </segment>
@@ -19929,7 +19929,7 @@ OUTPUT(0 to +5vDC)</text>
 <label x="55.88" y="64.77" size="1.27" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="5"/>
+<pinref part="S_JACK" gate="G$1" pin="5"/>
 <wire x1="344.17" y1="134.62" x2="332.74" y2="134.62" width="0.1524" layer="91"/>
 <label x="331.47" y="130.81" size="1.778" layer="95"/>
 </segment>
@@ -19967,11 +19967,11 @@ OUTPUT(0 to +5vDC)</text>
 <net name="N$33" class="0">
 <segment>
 <wire x1="218.44" y1="121.92" x2="218.44" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="218.44" y1="114.3" x2="231.14" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="114.3" x2="238.76" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="114.3" x2="228.6" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="114.3" x2="238.76" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="R32" gate="G$1" pin="2"/>
-<wire x1="231.14" y1="111.76" x2="231.14" y2="114.3" width="0.1524" layer="91"/>
-<junction x="231.14" y="114.3"/>
+<wire x1="228.6" y1="111.76" x2="228.6" y2="114.3" width="0.1524" layer="91"/>
+<junction x="228.6" y="114.3"/>
 <pinref part="LM2917_3" gate="G$1" pin="1"/>
 <pinref part="C27" gate="G$1" pin="+"/>
 <wire x1="238.76" y1="114.3" x2="238.76" y2="109.22" width="0.1524" layer="91"/>
@@ -20070,12 +20070,12 @@ OUTPUT(0 to +5vDC)</text>
 </net>
 <net name="VOUT" class="0">
 <segment>
-<pinref part="VOUT" gate="G$1" pin="1"/>
+<pinref part="PROXIMITY" gate="G$1" pin="1"/>
 <pinref part="R40" gate="G$1" pin="1"/>
 <wire x1="284.48" y1="132.08" x2="294.64" y2="132.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="1"/>
+<pinref part="S_JACK" gate="G$1" pin="1"/>
 <wire x1="372.11" y1="137.16" x2="382.27" y2="137.16" width="0.1524" layer="91"/>
 <label x="375.92" y="138.43" size="1.778" layer="95"/>
 </segment>

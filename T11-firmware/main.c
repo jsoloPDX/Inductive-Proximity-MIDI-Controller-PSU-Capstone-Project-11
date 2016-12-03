@@ -6,6 +6,7 @@
 #define DelayOff 100
 #define ADC_THRESHOLD 512
 
+// Comment out the #define DEBUG line to turn off debugging output
 #define DEBUG 1
 #define LINEFEED 10
 #define CARRIAGERETURN 13
@@ -47,7 +48,6 @@ void main( void )
 	*/
 	while(1)
 	{
-
 		/* 
 		Switch to perform mode functions (based on mode variable)
 		*/
@@ -302,8 +302,9 @@ void main( void )
 
 
 void InitializePorts(void){
-	// Port initialization code here. The function eventually will 
-	// accept inputs/outputs as needed. 
+	#ifdef DEBUG
+		USART_TransmitString("Ports are being initialized.", 28); 
+	#endif
 
 	// Initialize PinD2 as input
 	DDRD &= ~(1<<DDD2);
@@ -332,6 +333,10 @@ void InitializePorts(void){
 
 
 void AutoCalibration(void){
+	#ifdef DEBUG
+		USART_TransmitString("Autocalibration.", 16); 
+	#endif
+
 	// Perform initialization
 	PWM_On_PD5(256/2);
 	PWM_On_PD6(256/2);
@@ -403,8 +408,8 @@ int AnalogRead_PC0(void){
 	
 	int ADCValue = 0;
 
-    // Set ADC clock prescaler to 128. If this is too low, won't get good resolution
-    ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
+   	// Set ADC clock prescaler to 128. If this is too low, won't get good resolution
+  	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
 
 	// Set the ADC Reference to AVCC
    	ADMUX &= ~(1 << REFS1);  
@@ -426,7 +431,16 @@ int AnalogRead_PC0(void){
 
 	// Store both bytes into unsigned int
 	ADCValue = (ADCL | (ADCH << 8)); 
-
+	
+	#ifdef DEBUG
+		USART_TransmitString("Analog Pin 0 (High,Low): ", 28);
+		unsigned char HIGH = (ADCValue>>8); 
+		unsigned char LOW = (unsigned char)ADCValue; 		
+		USART_Transmit(HIGH);
+		USART_Transmit(44); 
+		USART_Transmit(LOW); 
+		USART_Transmit(CARRIAGERETURN); 
+	#endif
 	// Return combination as int
 	return  (ADCValue); 
 }
@@ -439,8 +453,8 @@ int AnalogRead_PC1(void){
 	
 	int ADCValue = 0;
 
-    // Set ADC clock prescaler to 128. If this is too low, won't get good resolution
-    ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
+	// Set ADC clock prescaler to 128. If this is too low, won't get good resolution
+	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
 
 	// Set the ADC Reference to AVCC
    	ADMUX &= ~(1 << REFS1);  
@@ -464,6 +478,16 @@ int AnalogRead_PC1(void){
 	// Store both bytes into unsigned int
 	ADCValue = (ADCL | (ADCH << 8)); 
 
+	#ifdef DEBUG
+		USART_TransmitString("Analog Pin 1 (High,Low): ", 28);
+		unsigned char HIGH = (ADCValue>>8); 
+		unsigned char LOW = (unsigned char)ADCValue; 		
+		USART_Transmit(HIGH);
+		USART_Transmit(44); 
+		USART_Transmit(LOW); 
+		USART_Transmit(CARRIAGERETURN); 
+	#endif
+
 	// Return combination as int
 	return  (ADCValue); 
 }
@@ -476,8 +500,8 @@ int AnalogRead_PC2(void){
 	
 	int ADCValue = 0;
 
-    // Set ADC clock prescaler to 128. If this is too low, won't get good resolution
-    ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
+	// Set ADC clock prescaler to 128. If this is too low, won't get good resolution
+	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
 
 	// Set the ADC Reference to AVCC
    	ADMUX &= ~(1 << REFS1);  
@@ -500,6 +524,16 @@ int AnalogRead_PC2(void){
 
 	// Store both bytes into unsigned int
 	ADCValue = (ADCL | (ADCH << 8)); 
+
+	#ifdef DEBUG
+		USART_TransmitString("Analog Pin 2 (High,Low): ", 28);
+		unsigned char HIGH = (ADCValue>>8); 
+		unsigned char LOW = (unsigned char)ADCValue; 		
+		USART_Transmit(HIGH);
+		USART_Transmit(44); 
+		USART_Transmit(LOW); 
+		USART_Transmit(CARRIAGERETURN); 
+	#endif
 
 	// Return combination as int
 	return  (ADCValue); 

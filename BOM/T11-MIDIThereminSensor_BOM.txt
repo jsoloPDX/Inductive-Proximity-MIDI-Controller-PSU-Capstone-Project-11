@@ -1,4 +1,4 @@
-Partlist exported from /Users/jamessolonika/GitHub/Inductive-Proximity-MIDI-Controller/T11-MIDITheremin.sch at 11/17/16 9:43 PM
+Partlist exported from /Users/jamessolonika/GitHub/Inductive-Proximity-MIDI-Controller/T11-MIDITheremin.sch at 12/3/16 3:37 PM
 
 Part      Value        Device          Package       Description                          
 ANT1      5pF          ANTENNA         PAD-01        Antenna                              

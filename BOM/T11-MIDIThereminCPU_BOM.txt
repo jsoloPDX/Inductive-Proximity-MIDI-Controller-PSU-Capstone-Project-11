@@ -1,58 +1,56 @@
-Partlist exported from /Users/jamessolonika/GitHub/Inductive-Proximity-MIDI-Controller/T11-MIDIThereminCPU.sch at 11/13/16 4:04 PM
+Partlist exported from /Users/jamessolonika/GitHub/Inductive-Proximity-MIDI-Controller/T11-MIDIThereminCPU.sch at 12/3/16 3:39 PM
 
-Part Value         Device                           Package               Description                                             DIGIKEYNUMBER  MF MPN           OC_FARNELL OC_NEWARK PACKAGE PARTNUMBER   SUPPLIER
-C1   22p           C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-C2   22p           C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-C3   1u            C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-C4   1u            C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-C5   0.33u         C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-C6   0.1u          C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-C7   100uF         CPOL-USE3.5-8                    E3,5-8                POLARIZED CAPACITOR, American symbol                                                                                                      
-C8   100uF         CPOL-USE3.5-8                    E3,5-8                POLARIZED CAPACITOR, American symbol                                                                                                      
-C10  100uF         CPOL-USE3.5-8                    E3,5-8                POLARIZED CAPACITOR, American symbol                                                                                                      
-C11  4.7u          CPOL-USE3.5-8                    E3,5-8                POLARIZED CAPACITOR, American symbol                                                                                                      
-C12  0.1u          C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-C13  0.1u          C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-C15  0.1u          C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                                                
-D1   5V            1N4148DO35-7                     DO35-7                DIODE                                                                                                                                     
-D2   0.7v Drop     1N4148DO35-7                     DO35-7                DIODE                                                                                                                                     
-D3   0.7v Drop     1N4148DO35-7                     DO35-7                DIODE                                                                                                                                     
-D4   5V            1N4148DO35-7                     DO35-7                DIODE                                                                                                                                     
-D5   5V            1N4148DO35-7                     DO35-7                DIODE                                                                                                                                     
-IC1  UA78M05DCY    UA78M05DCY                       SOT223                POSITIVE-VOLTAGE REGULATORS                             296-12290-1-ND                                               UA78M05CDCYR         
-IC5  4069D         4069D                            SO14                  Hex INVERTER                                            296-28484-1-ND                                               SN7414DR             
-J1   DCJ0202       DCJ0202                          DCJ0202               DC POWER JACK                                                                           unknown    unknown                                
-JP1                PINHD-2X3                        2X03                  PIN HEADER                                                                                                                                
-JP2                PINHD-1X6                        1X06                  PIN HEADER                                                                                                                                
-JP4                PINHD-1X6                        1X06                  PIN HEADER                                                                                                                                
-LED1               LED3MM                           LED3MM                LED                                                                                                                                       
-LED2               LED3MM                           LED3MM                LED                                                                                                                                       
-LED3               LED3MM                           LED3MM                LED                                                                                                                                       
-LED4               LED3MM                           LED3MM                LED                                                                                                                                       
-LED5               LED3MM                           LED3MM                LED                                                                                                                                       
-NP   10k           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-Q1   16MHz         CRYSTALSM49                      SM49                  CRYSTAL                                                                                 unknown    unknown                                
-R1   220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R2   220           R-US_M0805                       M0805                 RESISTOR, American symbol                                                                                                                 
-R3   10            R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R4   82k           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R5   18k           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R6   10            R-US_M0805                       M0805                 RESISTOR, American symbol                                                                                                                 
-R7   10            R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R8   100           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R9   100           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R10  100           R-US_M0805                       M0805                 RESISTOR, American symbol                                                                                                                 
-R11  82k           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R12  18k           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R13  220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R14  220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R15  220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R16  220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-R17  220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                                                 
-SW1                SWITCH_PUSHBUTTONSOFTTOUCHSMD_SJ PUSHBUTTON_SMD_SJ     Buttons                                                                                                                                   
-SW2                SWITCH_PUSHBUTTONSOFTTOUCHSMD_SJ PUSHBUTTON_SMD_SJ     Buttons                                                                                                                                   
-U$1  MIDIJACK      MIDIJACK                         CP-2350               DIN 5 jack also known as MIDI jack                                                                                                        
-U$2  MIDIJACK      MIDIJACK                         CP-2350               DIN 5 jack also known as MIDI jack                                                                                                        
-U$5  MIDIJACK      MIDIJACK                         CP-2350               DIN 5 jack also known as MIDI jack                                                                                                        
-U$6  MIDIJACK      MIDIJACK                         CP-2350               DIN 5 jack also known as MIDI jack                                                                                                        
-U1   ATMEGA328P-AU ATMEGA328P-AU                    QFP80P900X900X120-32N 8-bit Microcontroller with In-System Programmable Flash                   ATMEGA328P-AU 1715486    14R4631   TQFP-32              Atmel   
+Part        Value         Device                           Package               Description                                             MF MPN           OC_FARNELL OC_NEWARK PACKAGE SUPPLIER
+12VDC_INPUT DCJ0202       DCJ0202                          DCJ0202               DC POWER JACK                                                            unknown    unknown                   
+C1          22p           C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                    
+C2          22p           C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                    
+C5          0.33u         C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                    
+C6          0.1u          C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                    
+C7          100uF         CPOL-USE3.5-8                    E3,5-8                POLARIZED CAPACITOR, American symbol                                                                          
+C8          100uF         CPOL-USE3.5-8                    E3,5-8                POLARIZED CAPACITOR, American symbol                                                                          
+C10         100uF         CPOL-USE3.5-8                    E3,5-8                POLARIZED CAPACITOR, American symbol                                                                          
+C11         4.7u          CPOL-USE3.5-8                    E3,5-8                POLARIZED CAPACITOR, American symbol                                                                          
+C12         0.1u          C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                    
+C13         0.1u          C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                    
+C15         0.1u          C-USC0805                        C0805                 CAPACITOR, American symbol                                                                                    
+D1          5V            1N4148DO35-7                     DO35-7                DIODE                                                                                                         
+D4          5V            1N4148DO35-7                     DO35-7                DIODE                                                                                                         
+D5          5V            1N4148DO35-7                     DO35-7                DIODE                                                                                                         
+IC1         UA78M05DCY    UA78M05DCY                       SOT223                POSITIVE-VOLTAGE REGULATORS                                                                                   
+JP1                       PINHD-2X3                        2X03                  PIN HEADER                                                                                                    
+JP2                       PINHD-1X6                        1X06                  PIN HEADER                                                                                                    
+JP3                       PINHD-1X6                        1X06                  PIN HEADER                                                                                                    
+JP4                       PINHD-1X1                        1X01                  PIN HEADER                                                                                                    
+JP5                       PINHD-1X1                        1X01                  PIN HEADER                                                                                                    
+JP6                       PINHD-1X1                        1X01                  PIN HEADER                                                                                                    
+JP7                       PINHD-1X1                        1X01                  PIN HEADER                                                                                                    
+JP8                       PINHD-1X1                        1X01                  PIN HEADER                                                                                                    
+LED1                      LED3MM                           LED3MM                LED                                                                                                           
+LED2                      LED3MM                           LED3MM                LED                                                                                                           
+LED3                      LED3MM                           LED3MM                LED                                                                                                           
+LED4                      LED3MM                           LED3MM                LED                                                                                                           
+LED5                      LED3MM                           LED3MM                LED                                                                                                           
+MIDI_OUT    MIDIJACK      MIDIJACK                         CP-2350               DIN 5 jack also known as MIDI jack                                                                            
+NP          10k           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+Q1          16MHz         CRYSTALSM49                      SM49                  CRYSTAL                                                                  unknown    unknown                   
+R1          220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R2          220           R-US_M0805                       M0805                 RESISTOR, American symbol                                                                                     
+R3          10            R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R4          10k           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R6          10            R-US_M0805                       M0805                 RESISTOR, American symbol                                                                                     
+R7          10            R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R8          100           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R9          100           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R10         100           R-US_M0805                       M0805                 RESISTOR, American symbol                                                                                     
+R11         10k           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R13         220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R14         220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R15         220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R16         220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+R17         220           R-US_R0805                       R0805                 RESISTOR, American symbol                                                                                     
+SW1                       SWITCH_PUSHBUTTONSOFTTOUCHSMD_SJ PUSHBUTTON_SMD_SJ     Buttons                                                                                                       
+SW2                       SWITCH_PUSHBUTTONSOFTTOUCHSMD_SJ PUSHBUTTON_SMD_SJ     Buttons                                                                                                       
+S_JACK_1    MIDIJACK      MIDIJACK                         CP-2350               DIN 5 jack also known as MIDI jack                                                                            
+S_JACK_2    MIDIJACK      MIDIJACK                         CP-2350               DIN 5 jack also known as MIDI jack                                                                            
+S_JACK_3    MIDIJACK      MIDIJACK                         CP-2350               DIN 5 jack also known as MIDI jack                                                                            
+U1          ATMEGA328P-AU ATMEGA328P-AU                    QFP80P900X900X120-32N 8-bit Microcontroller with In-System Programmable Flash    ATMEGA328P-AU 1715486    14R4631   TQFP-32 Atmel   

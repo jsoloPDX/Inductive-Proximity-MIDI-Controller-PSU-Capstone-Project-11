@@ -35,3 +35,13 @@ void MIDI_Init()
 {
 	USART_Init(MYUBRR);
 }
+
+void USART_TransmitString(char* StringToSend, unsigned char StringLength)
+{
+	unsigned char i = 0; 
+	for (i=1; i <= StringLength; i++)
+	{
+		USART_Transmit((unsigned char)StringToSend[i-1]); 
+	}
+	USART_Transmit((unsigned char)CARRIAGERETURN); 
+}

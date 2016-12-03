@@ -10,4 +10,6 @@ void BlinkLED_PD7(unsigned char NumOfBlinks);
 void BlinkLED_PB0(unsigned char NumOfBlinks);
 void BlinkLED_PB1(unsigned char NumOfBlinks);
 void BlinkLED_PB2(unsigned char NumOfBlinks);
-uint16_t adc_read(uint8_t adcx);
+int AnalogRead_PC0(void);
+int AnalogRead_PC1(void);
+int AnalogRead_PC2(void);

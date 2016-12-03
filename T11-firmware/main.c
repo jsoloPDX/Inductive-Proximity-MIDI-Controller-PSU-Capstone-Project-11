@@ -1,15 +1,21 @@
 #define F_CPU 16000000UL 
+#define BAUD 38400
+#define MYUBRR F_CPU/16/BAUD-1
+
+#define DelayOn 50
+#define DelayOff 100
+#define ADC_THRESHOLD 512
+
+#define DEBUG 1
+#define LINEFEED 10
+#define CARRIAGERETURN 13
 
 #include <avr/io.h> 
 #include <util/delay.h>
 #include <stdint.h>
 #include "pwm.h"
 #include "main.h"
-
-#define DelayOn 50
-#define DelayOff 100
-#define ADC_PIN 2
-#define ADC_THRESHOLD 512
+#include "usart.h"
 
 void main( void )
 {
@@ -17,10 +23,22 @@ void main( void )
 	Initialization Stuff should go here. 
 	This can include initial calibration
 	*/
+	
 	int mode = 0;
 	int savedMode = 0;
+	int ADCVal = 0; 
+	unsigned char DutyCycle = 256/2; 
 	InitializePorts();
 	AutoCalibration();	
+
+	/* 
+	If DEBUG is defined, enable UART for sending data over TX port
+	*/
+	#ifdef DEBUG
+		// Initialize serial port for sending debug data
+		USART_Init(25); // BAUD rate 38400
+		USART_TransmitString("DEBUG is enabled.", 17); 
+	#endif
 
 	/*
 	This is the main polling loop. With the exception of function calls, 
@@ -39,6 +57,9 @@ void main( void )
 				/* 
 				Quiet mode (no inputs or outputs; polling switches)
 				*/
+				#ifdef DEBUG
+					USART_TransmitString("Entering Quiet Mode.", 20); 
+				#endif
 				PORTD |= (1 << DDD4);
 				PORTD |= (1 << DDD7);
 				PORTB |= (1 << DDB0);
@@ -52,6 +73,9 @@ void main( void )
 				(Will contain the code to map input voltages to
 				MIDI outputs) 
 				*/
+				#ifdef DEBUG
+					USART_TransmitString("Entering Mode 1.", 16); 
+				#endif
 				PORTD &= ~(1<<DDD4);
 				PORTD &= ~(1<<DDD7);
 				PORTB |= (1 << DDB0);
@@ -60,6 +84,9 @@ void main( void )
 				break;
 
 			case 2:
+				#ifdef DEBUG
+					USART_TransmitString("Entering Mode 2.", 16); 
+				#endif
 				PORTD &= ~(1<<DDD4);
 				PORTD &= ~(1<<DDD7);
 				PORTB |= (1 << DDB0);
@@ -68,6 +95,9 @@ void main( void )
 				break;
 
 			case 3:
+				#ifdef DEBUG
+					USART_TransmitString("Entering Mode 3.", 16); 
+				#endif
 				PORTD &= ~(1<<DDD4);
 				PORTD &= ~(1<<DDD7);
 				PORTB |= (1 << DDB0);
@@ -80,11 +110,19 @@ void main( void )
 				Calibrate mode. Re-press begins calibration of first
 				sensor. Can return to Quiet mode without calibrating.
 				*/
+				#ifdef DEBUG
+					USART_TransmitString("Entering Mode Calibration Mode.", 31); 
+				#endif
 				PORTD |= (1 << DDD4);
 				PORTD &= ~(1<<DDD7);
 				PORTB &= ~(1<<DDB0);
 				PORTB &= ~(1<<DDB1);
 				PORTB &= ~(1<<DDB2);
+
+				int calSensor1 = 0;
+				int calSensor2 = 0;
+				int calSensor3 = 0;
+
 				break;
 
 			case 5:
@@ -94,34 +132,111 @@ void main( void )
 				and holds the PWM out for each sensor at the value that
 				corresponds to the lowest input voltage.)
 				*/
+				#ifdef DEBUG
+					USART_TransmitString("Calibrating Sensor 1.", 21); 
+				#endif
 				PORTD |= (1 << DDD4);
 				PORTD &= ~(1<<DDD7);
 				PORTB |= (1 << DDB0);
 				PORTB &= ~(1<<DDB1);
 				PORTB &= ~(1<<DDB2);
 
-				// my ineffective attempt at using sensor input value to turn LED5 on/off:
-				//if (adc_read(ADC_PIN) > ADC_THRESHOLD){
-				//	PORTB &= ~(1<<DDB2);
-				//}else{
-				//	PORTB |= (1 << DDB2);
-				//}	
+				// Calibration voltage sweep enable
+				PWM_On_PD5(DutyCycle);
+
+				// Initalize values for sensor calibration voltage to 5
+				int i = 255;
+
+				// sweep the PWM output
+				// it stops as soon as it detects a voltage within 20mV of 0
+				for (i = 255; i >= 0; i--)
+				{
+					if (calSensor1 == 0){
+						PWM_Change_PD5(i);
+						ADCVal = AnalogRead_PC0();
+						if (ADCVal > 0 && ADCVal <= 20){
+							calSensor1 = i;
+							mode = 6;
+							BlinkLED_PB0(5);
+							break;
+						}
+						_delay_ms(100);
+					}else if (calSensor1 > 0){
+						PWM_Change_PD5(calSensor1);
+					}
+
+				}
+
 				break;
 
 			case 6:
+				#ifdef DEBUG
+					USART_TransmitString("Calibrating Sensor 2.", 21); 
+				#endif
 				PORTD |= (1 << DDD4);
 				PORTD &= ~(1<<DDD7);
 				PORTB |= (1 << DDB0);
 				PORTB |= (1 << DDB1);
 				PORTB &= ~(1<<DDB2);
+
+				// Calibration voltage sweep enable
+				PWM_On_PD6(DutyCycle);
+
+				// sweep the PWM output
+				// it stops as soon as it detects a voltage within 20mV of 0
+				for (i = 255; i >= 0; i--)
+				{
+					if (calSensor2 == 0){
+						PWM_Change_PD6(i);
+						ADCVal = AnalogRead_PC1();
+						if (ADCVal > 0 && ADCVal <= 20){
+							calSensor2 = i;
+							mode = 7;
+							BlinkLED_PB1(5);
+							break;
+						}
+						_delay_ms(100);
+					}else if (calSensor2 > 0){
+						PWM_Change_PD6(calSensor2);
+					}
+
+				}
+
 				break;
 
 			case 7:
+				#ifdef DEBUG
+					USART_TransmitString("Calibrating Sensor 3.", 21); 
+				#endif
 				PORTD |= (1 << DDD4);
 				PORTD &= ~(1<<DDD7);
 				PORTB |= (1 << DDB0);
 				PORTB |= (1 << DDB1);
 				PORTB |= (1 << DDB2);
+
+				// Calibration voltage sweep enable
+				PWM_On_PB3(DutyCycle);
+
+				// sweep the PWM output
+				// it stops as soon as it detects a voltage within 20mV of 0
+				for (i = 255; i >= 0; i--)
+				{
+					if (calSensor3 == 0){
+						PWM_Change_PB3(i);
+						ADCVal = AnalogRead_PC2();
+						if (ADCVal > 0 && ADCVal <= 20){
+							calSensor3 = i;
+							mode = 0;
+							BlinkLED_PB2(5);
+							break;
+						}
+						_delay_ms(100);
+					}else if (calSensor3 > 0){
+						PWM_Change_PB3(calSensor3);
+					}
+
+				}
+
 				break;
 
 			default:
@@ -129,11 +244,13 @@ void main( void )
 		}
 
 		if(IsButtonOnePressed()){
-
 			/* 
 			Conditionals to toggle between all modes per the software
 			state diagram. (Switch 1: Mostly used for play modes)
 			*/
+			#ifdef DEBUG
+				USART_TransmitString("Button 1 Pressed.", 17); 
+			#endif
 			if(mode == 0 && savedMode == 0){
 				mode += 1;
 			}	
@@ -156,11 +273,13 @@ void main( void )
 		}
 
 		if(IsButtonTwoPressed()){
-
 			/* 
 			Conditionals to toggle between all modes per the software
 			state diagram. (Switch 2: Mostly used for calibration)
 			*/
+			#ifdef DEBUG
+				USART_TransmitString("Button 2 Pressed.", 17); 
+			#endif
 			if(mode == 0){
 				mode = 4;
 			}
@@ -185,12 +304,6 @@ void main( void )
 void InitializePorts(void){
 	// Port initialization code here. The function eventually will 
 	// accept inputs/outputs as needed. 
-	
-	// Enable ADC
-	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
-	ADMUX = (1 << REFS0);
-	ADCSRA |= (1 << ADEN);
-	//ADCSRA |= (1 << ADSC);
 
 	// Initialize PinD2 as input
 	DDRD &= ~(1<<DDD2);
@@ -219,7 +332,20 @@ void InitializePorts(void){
 
 
 void AutoCalibration(void){
-	// Perform auto calibration
+	// Perform initialization
+	PWM_On_PD5(256/2);
+	PWM_On_PD6(256/2);
+	PWM_On_PB3(256/2);
+
+	// For setting trim capacitors (manual calibration)
+	//PWM_Change_PD5(127);
+	//PWM_Change_PD6(127);
+	//PWM_Change_PB3(127);
+
+	// Normal operation
+	PWM_Change_PD5(0);
+	PWM_Change_PD6(0);
+	PWM_Change_PB3(0);
 
 }
 
@@ -271,29 +397,114 @@ int IsButtonTwoPressed(void){
 
 
 
-// hasn't been working. not yet updated to eric's working code:
-uint16_t adc_read(uint8_t adcx) {
-	/* adcx is the analog pin we want to use.  ADMUX's first few bits are
-	 * the binary representations of the numbers of the pins so we can
-	 * just 'OR' the pin's number with ADMUX to select that pin.
-	 * We first zero the four bits by setting ADMUX equal to its higher
-	 * four bits. */
-	ADMUX	&=	0xf0;
-	ADMUX	|=	adcx;
 
-	/* This starts the conversion. */
-	ADCSRA |= (1<<ADSC);
+// Analog Pin 0
+int AnalogRead_PC0(void){
+	
+	int ADCValue = 0;
 
-	/* This is an idle loop that just wait around until the conversion
-	 * is finished.  It constantly checks ADCSRA's ADSC bit, which we just
-	 * set above, to see if it is still set.  This bit is automatically
-	 * reset (zeroed) when the conversion is ready so if we do this in
-	 * a loop the loop will just go until the conversion is ready. */
-	while ( (ADCSRA & (1<<ADSC)) );  
+    // Set ADC clock prescaler to 128. If this is too low, won't get good resolution
+    ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
 
-	/* Finally, we return the converted value to the calling function. */
-	return ADC;
+	// Set the ADC Reference to AVCC
+   	ADMUX &= ~(1 << REFS1);  
+   	ADMUX |= (1 << REFS0);  
+	// Disable left adjust (use both ADCH and ADCL)
+   	ADMUX &= ~(1 << ADLAR);
+   	// Set MUX[3:0] to 0000 to enable ADC0
+	ADMUX &= ~(1<<MUX3) & ~(1<<MUX2) & ~(1<<MUX1) & ~(1<<MUX0); 
+	// Disables PRR bit, so ADC can be enabled
+	//PRR &= ~(1<<PRADC); 
+	// Enable ADC   
+	ADCSRA |= (1 << ADEN);  
+
+	// Start A2D Conversions
+	ADCSRA |= (1 << ADSC); 
+
+	// Wait for ADC to complete	
+	while (ADCSRA & (1<<ADSC));
+
+	// Store both bytes into unsigned int
+	ADCValue = (ADCL | (ADCH << 8)); 
+
+	// Return combination as int
+	return  (ADCValue); 
 }
+
+
+
+
+// Analog Pin 1
+int AnalogRead_PC1(void){
+	
+	int ADCValue = 0;
+
+    // Set ADC clock prescaler to 128. If this is too low, won't get good resolution
+    ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
+
+	// Set the ADC Reference to AVCC
+   	ADMUX &= ~(1 << REFS1);  
+   	ADMUX |= (1 << REFS0);  
+	// Disable left adjust (use both ADCH and ADCL)
+   	ADMUX &= ~(1 << ADLAR);
+   	// Set MUX[3:0] to 0001 to enable ADC1
+	ADMUX &= ~(1<<MUX3) & ~(1<<MUX2) & ~(1<<MUX1); 
+	ADMUX |=  (1<<MUX0); 
+	// Disables PRR bit, so ADC can be enabled
+	//PRR &= ~(1<<PRADC); 
+	// Enable ADC   
+	ADCSRA |= (1 << ADEN);  
+
+	// Start A2D Conversions
+	ADCSRA |= (1 << ADSC); 
+
+	// Wait for ADC to complete	
+	while (ADCSRA & (1<<ADSC));
+
+	// Store both bytes into unsigned int
+	ADCValue = (ADCL | (ADCH << 8)); 
+
+	// Return combination as int
+	return  (ADCValue); 
+}
+
+
+
+
+// Analog Pin 2
+int AnalogRead_PC2(void){
+	
+	int ADCValue = 0;
+
+    // Set ADC clock prescaler to 128. If this is too low, won't get good resolution
+    ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); 
+
+	// Set the ADC Reference to AVCC
+   	ADMUX &= ~(1 << REFS1);  
+   	ADMUX |= (1 << REFS0);  
+	// Disable left adjust (use both ADCH and ADCL)
+   	ADMUX &= ~(1 << ADLAR);
+   	// Set MUX[3:0] to 0010 to enable ADC2
+	ADMUX &= ~(1<<MUX3) & ~(1<<MUX2) & ~(1<<MUX0); 
+	ADMUX |=  (1<<MUX1); 
+	// Disables PRR bit, so ADC can be enabled
+	//PRR &= ~(1<<PRADC); 
+	// Enable ADC   
+	ADCSRA |= (1 << ADEN);  
+
+	// Start A2D Conversions
+	ADCSRA |= (1 << ADSC); 
+
+	// Wait for ADC to complete	
+	while (ADCSRA & (1<<ADSC));
+
+	// Store both bytes into unsigned int
+	ADCValue = (ADCL | (ADCH << 8)); 
+
+	// Return combination as int
+	return  (ADCValue); 
+}
+
 
 
 
@@ -379,6 +590,48 @@ void BlinkLED_PB2(unsigned char NumOfBlinks){
 		_delay_ms(DelayOff);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

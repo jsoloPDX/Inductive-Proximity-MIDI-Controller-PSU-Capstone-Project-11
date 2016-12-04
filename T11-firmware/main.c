@@ -4,7 +4,23 @@
 
 #define DelayOn 50
 #define DelayOff 100
-#define ADC_THRESHOLD 512
+#define ADC_THRESHOLD 40 // 20-50 works best, upper value used in zero calibration
+#define numSam 8         // number of samples for averaging buffer
+
+/* These are sensor values */
+#define f0 50
+#define f1 60
+#define f2 70
+#define f3 80
+#define f4 96
+#define f5 128
+#define f6 256
+#define f7 384
+#define m0 512
+#define m1 640
+#define c0 768
+#define c1 896
+#define c2 960
 
 /* Comment out the "#define DEBUG 1" line to turn off debugging output
 !!!!!-WARNING-!!!!! Turn OFF debugging (comment out line) before enabling 
@@ -19,7 +35,7 @@ MIDI, since MIDI needs to use the USART at a different BAUD rate. */
 #include "pwm.h"
 #include "main.h"
 #include "usart.h"
-#include "analog.h"
+#include "analog.h" 
 
 void main( void )
 {
@@ -30,10 +46,18 @@ void main( void )
 	
 	int mode = 0;
 	int savedMode = 0;
-	int ADCVal = 0; 
+	int ADCVal = 0;
 	unsigned char DutyCycle = 256/2; 
+	int ADC_Buffer1[numSam];
+	InitializeBuffer(ADC_Buffer1);
 	InitializePorts();
 	AutoCalibration();	
+
+	MIDI_Init();
+	unsigned char NoteON = 0x90;
+	unsigned char DataNote = 0x50;
+	unsigned char DataVelocity = 0x7F; 
+	unsigned char NoteOFF = 0x80;
 
 	/* 
 	If DEBUG is defined, enable UART for sending data over TX port
@@ -68,6 +92,7 @@ void main( void )
 				PORTB |= (1 << DDB0);
 				PORTB |= (1 << DDB1);
 				PORTB |= (1 << DDB2);
+
 				break;
 			
 			case 1:
@@ -79,11 +104,48 @@ void main( void )
 				#ifdef DEBUG
 					USART_TransmitString("Entering Mode 1.", 16); 
 				#endif
-				PORTD &= ~(1<<DDD4);
-				PORTD &= ~(1<<DDD7);
-				PORTB |= (1 << DDB0);
-				PORTB &= ~(1<<DDB1);
-				PORTB &= ~(1<<DDB2);
+				//PORTD &= ~(1<<DDD4);
+				//PORTD &= ~(1<<DDD7);
+				//PORTB |= (1 << DDB0);
+				//PORTB &= ~(1<<DDB1);
+				//PORTB &= ~(1<<DDB2); 
+
+				// 
+				ADCVal = Average_PC0(ADC_Buffer1);
+
+				// Just some diagnostics using LEDs to track distance from sensor 2
+				if (ADCVal >= f0 && ADCVal < f1){
+					PORTD |= (1 << DDD7);
+					PORTB &= ~(1<<DDB0);
+					PORTB &= ~(1<<DDB1);
+					PORTB &= ~(1<<DDB2); 
+					MIDI_Transmit(NoteON,DataNote,DataVelocity);
+				}else if (ADCVal >= f1 && ADCVal < f2){
+					PORTD &= ~(1<<DDD7);
+					PORTB |= (1 << DDB0);
+					PORTB &= ~(1<<DDB1);
+					PORTB &= ~(1<<DDB2);
+					MIDI_Transmit(NoteOFF,DataNote,DataVelocity);
+				}else if (ADCVal >= f2 && ADCVal < f3){
+					PORTD &= ~(1<<DDD7);
+					PORTB &= ~(1<<DDB0);
+					PORTB |= (1 << DDB1);
+					PORTB &= ~(1<<DDB2); 
+					MIDI_Transmit(NoteON,DataNote,DataVelocity);
+				}else if (ADCVal >= f3 && ADCVal < f4){
+					PORTD &= ~(1<<DDD7);
+					PORTB &= ~(1<<DDB0);
+					PORTB &= ~(1<<DDB1);
+					PORTB |= (1 << DDB2);
+					MIDI_Transmit(NoteOFF,DataNote,DataVelocity);
+				}else if (ADCVal < f0){
+					PORTD &= ~(1<<DDD4);
+					PORTD &= ~(1<<DDD7);
+					PORTB &= ~(1<<DDB0);
+					PORTB &= ~(1<<DDB1);
+					PORTB &= ~(1<<DDB2); 
+				}
+
 				break;
 
 			case 2:
@@ -122,9 +184,8 @@ void main( void )
 				PORTB &= ~(1<<DDB1);
 				PORTB &= ~(1<<DDB2);
 
-				int calSensor1 = 0;
-				int calSensor2 = 0;
-				int calSensor3 = 0;
+				// Initalize values for sensor calibration voltage to 5
+				int i = 255;
 
 				break;
 
@@ -144,11 +205,16 @@ void main( void )
 				PORTB &= ~(1<<DDB1);
 				PORTB &= ~(1<<DDB2);
 
+				// Initalize sensor calibration voltage values
+				int calSensor1 = 0;
+				int calSensor2 = 0;
+				int calSensor3 = 0;
+				PWM_Change_PD5(calSensor1);
+				PWM_Change_PD6(calSensor2);
+				PWM_Change_PB3(calSensor3);
+
 				// Calibration voltage sweep enable
 				PWM_On_PD5(DutyCycle);
-
-				// Initalize values for sensor calibration voltage to 5
-				int i = 255;
 
 				// sweep the PWM output
 				// it stops as soon as it detects a voltage within 20mV of 0
@@ -157,13 +223,13 @@ void main( void )
 					if (calSensor1 == 0){
 						PWM_Change_PD5(i);
 						ADCVal = AnalogRead_PC0();
-						if (ADCVal > 0 && ADCVal <= 20){
+						if (ADCVal > 0 && ADCVal <= ADC_THRESHOLD){
 							calSensor1 = i;
 							mode = 6;
-							BlinkLED_PB0(5);
+							BlinkLED_PB0(3);
 							break;
 						}
-						_delay_ms(100);
+						_delay_ms(50);
 					}else if (calSensor1 > 0){
 						PWM_Change_PD5(calSensor1);
 					}
@@ -192,13 +258,13 @@ void main( void )
 					if (calSensor2 == 0){
 						PWM_Change_PD6(i);
 						ADCVal = AnalogRead_PC1();
-						if (ADCVal > 0 && ADCVal <= 20){
+						if (ADCVal > 0 && ADCVal <= ADC_THRESHOLD){
 							calSensor2 = i;
 							mode = 7;
-							BlinkLED_PB1(5);
+							BlinkLED_PB1(3);
 							break;
 						}
-						_delay_ms(100);
+						_delay_ms(50);
 					}else if (calSensor2 > 0){
 						PWM_Change_PD6(calSensor2);
 					}
@@ -227,13 +293,13 @@ void main( void )
 					if (calSensor3 == 0){
 						PWM_Change_PB3(i);
 						ADCVal = AnalogRead_PC2();
-						if (ADCVal > 0 && ADCVal <= 20){
+						if (ADCVal > 0 && ADCVal <= ADC_THRESHOLD){
 							calSensor3 = i;
 							mode = 0;
-							BlinkLED_PB2(5);
+							BlinkLED_PB2(3);
 							break;
 						}
-						_delay_ms(100);
+						_delay_ms(50);
 					}else if (calSensor3 > 0){
 						PWM_Change_PB3(calSensor3);
 					}
@@ -330,6 +396,21 @@ void InitializePorts(void){
 	DDRB |= (1 << DDB2);
 	PORTB &= ~(1<<DDB2);
 
+}
+
+
+
+
+void InitializeBuffer(int* ADC_Buffer1){
+	#ifdef DEBUG
+		USART_TransmitString("The buffer is being initialized.", 32); 
+	#endif
+
+	// Initalize all values of ADC_Buffer1 to 0
+	unsigned int i = 0;
+	for (i=0; i<=(numSam - 1); i++){
+    	ADC_Buffer1[i] = 0;
+	}
 }
 
 
@@ -490,7 +571,28 @@ void BlinkLED_PB2(unsigned char NumOfBlinks){
 
 
 
+// Function to buffer and average the analog_read values
+int Average_PC0(int* ADC_Buffer1){
 
+	unsigned char i = 0;
+	int ADC_Total = 0;
+	int val = AnalogRead_PC0();
+
+	// Shifts all data in the array one space left
+	for (i=0; i<(numSam - 1); i++){
+    	ADC_Buffer1[i] = ADC_Buffer1[i+1] ;
+	}
+	// Fills in the last space in the buffer with the new analog_read value
+	ADC_Buffer1[numSam - 1] = val;
+
+	// Averages the numbers in the buffer
+	for (i=0; i<=(numSam - 1); i++){
+    	ADC_Total += ADC_Buffer1[i];
+	}
+	ADC_Total = ADC_Total/numSam;
+
+	return ADC_Total;
+}
 
 
 

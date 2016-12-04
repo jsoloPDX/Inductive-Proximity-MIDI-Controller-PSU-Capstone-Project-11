@@ -2,6 +2,7 @@
 
 // Functions
 void InitializePorts(void);
+void InitializeBuffer(int* ADC_Buffer1);
 void AutoCalibration(void);
 int IsButtonOnePressed(void);
 int IsButtonTwoPressed(void);
@@ -13,3 +14,4 @@ void BlinkLED_PB2(unsigned char NumOfBlinks);
 int AnalogRead_PC0(void);
 int AnalogRead_PC1(void);
 int AnalogRead_PC2(void);
+int Average_PC0(int* ADC_Buffer1);

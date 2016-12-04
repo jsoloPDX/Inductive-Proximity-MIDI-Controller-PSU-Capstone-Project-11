@@ -22,6 +22,3 @@ The code library "Arduino_MIDI_Library_v4.2.zip" is not our work and is taken fr
 
 The EagleCAD library "adafruit-Adafruit-Eagle-Library-4abf84c.zip" is not our work and is taken from the project at:
 https://github.com/adafruit/Adafruit-Eagle-Library
-
-The EagleCAD library "SparkFun-DiscreteSemi.lbr" is not our work and is taken from the project at:
-https://github.com/sparkfun/SparkFun-Eagle-Libraries

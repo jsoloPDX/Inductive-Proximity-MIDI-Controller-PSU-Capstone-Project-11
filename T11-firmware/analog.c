@@ -145,3 +145,87 @@ int AnalogRead_PC2(void){
 	// Return combination as int
 	return  (ADCValue); 
 }
+
+
+// Analog Mean read of Analog Pin 0
+int AnalogRead_MeanPC0(unsigned char NumOfSamplesToAverage){
+
+	int TotalValue = 0;  
+	int MeanValue = 0; 
+	int i = 0; 
+	
+	for (i = 1; i <= NumOfSamplesToAverage; i++)
+	{		
+		TotalValue = TotalValue + AnalogRead_PC0();
+		_delay_ms(10); // Tweak value as needed. 
+	}
+	MeanValue = TotalValue/NumOfSamplesToAverage; 
+
+	#ifdef DEBUG
+		USART_TransmitString("Analog Pin 0 Mean Value: ", 25);
+		unsigned char HIGH = (MeanValue>>8); 
+		unsigned char LOW = (unsigned char)MeanValue; 		
+		USART_Transmit(HIGH);
+		USART_Transmit(44); 
+		USART_Transmit(LOW); 
+		USART_Transmit(CARRIAGERETURN); 
+	#endif
+	return MeanValue; 
+}
+
+
+
+// Analog Mean read of Analog Pin 1
+int AnalogRead_MeanPC1(unsigned char NumOfSamplesToAverage){
+
+	int TotalValue = 0;  
+	int MeanValue = 0; 
+	int i = 0; 
+	
+	for (i = 1; i <= NumOfSamplesToAverage; i++)
+	{		
+		TotalValue = TotalValue + AnalogRead_PC1();
+		_delay_ms(10); // Tweak value as needed. 
+	}
+	MeanValue = TotalValue/NumOfSamplesToAverage; 
+
+	#ifdef DEBUG
+		USART_TransmitString("Analog Pin 1 Mean Value: ", 25);
+		unsigned char HIGH = (MeanValue>>8); 
+		unsigned char LOW = (unsigned char)MeanValue; 		
+		USART_Transmit(HIGH);
+		USART_Transmit(44); 
+		USART_Transmit(LOW); 
+		USART_Transmit(CARRIAGERETURN); 
+	#endif
+	return MeanValue; 
+}
+
+
+
+
+// Analog Mean read of Analog Pin 2
+int AnalogRead_MeanPC2(unsigned char NumOfSamplesToAverage){
+
+	int TotalValue = 0;  
+	int MeanValue = 0; 
+	int i = 0; 
+	
+	for (i = 1; i <= NumOfSamplesToAverage; i++)
+	{		
+		TotalValue = TotalValue + AnalogRead_PC2();
+		_delay_ms(10); // Tweak value as needed. 
+	}
+	MeanValue = TotalValue/NumOfSamplesToAverage; 
+
+	#ifdef DEBUG
+		USART_TransmitString("Analog Pin 2 Mean Value: ", 25);
+		unsigned char HIGH = (MeanValue>>8); 
+		unsigned char LOW = (unsigned char)MeanValue; 		
+		USART_Transmit(HIGH);
+		USART_Transmit(44); 
+		USART_Transmit(LOW); 
+		USART_Transmit(CARRIAGERETURN); 
+	#endif
+	return MeanValue; 
+}

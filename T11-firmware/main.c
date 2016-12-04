@@ -44,7 +44,7 @@ void main( void )
 	This can include initial calibration
 	*/
 	
-	int mode = 0;
+	int mode = 0; // Set to 0 by default. If other than zero, then was set temporarily for debug purposes.
 	int savedMode = 0;
 	int ADCVal = 0;
 	unsigned char DutyCycle = 256/2; 
@@ -52,8 +52,11 @@ void main( void )
 	InitializeBuffer(ADC_Buffer1);
 	InitializePorts();
 	AutoCalibration();	
-
-	MIDI_Init();
+	
+	// If DEBUG is NOT defined, then allow MIDI
+	#ifndef DEBUG
+		MIDI_Init();
+	#endif
 	unsigned char NoteON = 0x90;
 	unsigned char DataNote = 0x50;
 	unsigned char DataVelocity = 0x7F; 
@@ -73,6 +76,7 @@ void main( void )
 	the microcontroller should stay here while powered, and after the 
 	initialization. 
 	*/
+	
 	while(1)
 	{
 		/* 
@@ -111,7 +115,7 @@ void main( void )
 				//PORTB &= ~(1<<DDB2); 
 
 				// 
-				ADCVal = Average_PC0(ADC_Buffer1);
+				ADCVal = AnalogRead_MeanPC0(10);
 
 				// Just some diagnostics using LEDs to track distance from sensor 2
 				if (ADCVal >= f0 && ADCVal < f1){
@@ -119,25 +123,33 @@ void main( void )
 					PORTB &= ~(1<<DDB0);
 					PORTB &= ~(1<<DDB1);
 					PORTB &= ~(1<<DDB2); 
-					MIDI_Transmit(NoteON,DataNote,DataVelocity);
+					#ifndef DEBUG					
+						MIDI_Transmit(NoteON,DataNote,DataVelocity);
+					#endif
 				}else if (ADCVal >= f1 && ADCVal < f2){
 					PORTD &= ~(1<<DDD7);
 					PORTB |= (1 << DDB0);
 					PORTB &= ~(1<<DDB1);
 					PORTB &= ~(1<<DDB2);
-					MIDI_Transmit(NoteOFF,DataNote,DataVelocity);
+					#ifndef DEBUG					
+						MIDI_Transmit(NoteON,DataNote,DataVelocity);
+					#endif
 				}else if (ADCVal >= f2 && ADCVal < f3){
 					PORTD &= ~(1<<DDD7);
 					PORTB &= ~(1<<DDB0);
 					PORTB |= (1 << DDB1);
 					PORTB &= ~(1<<DDB2); 
-					MIDI_Transmit(NoteON,DataNote,DataVelocity);
+					#ifndef DEBUG					
+						MIDI_Transmit(NoteON,DataNote,DataVelocity);
+					#endif
 				}else if (ADCVal >= f3 && ADCVal < f4){
 					PORTD &= ~(1<<DDD7);
 					PORTB &= ~(1<<DDB0);
 					PORTB &= ~(1<<DDB1);
 					PORTB |= (1 << DDB2);
-					MIDI_Transmit(NoteOFF,DataNote,DataVelocity);
+					#ifndef DEBUG					
+						MIDI_Transmit(NoteON,DataNote,DataVelocity);
+					#endif
 				}else if (ADCVal < f0){
 					PORTD &= ~(1<<DDD4);
 					PORTD &= ~(1<<DDD7);

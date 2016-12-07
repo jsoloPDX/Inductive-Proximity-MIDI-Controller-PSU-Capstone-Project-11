@@ -28,7 +28,10 @@ void main( void )
 	InitializePorts();
 	unsigned char PWMValue1 = 127; 
 	unsigned char OldPWMValue1 = 127; 
-	InitializeSensors(PWMValue1); // Turns on PWM at 2.5 volts
+	unsigned char PWMValue2 = 127; 
+	unsigned char OldPWMValue2 = 127; 
+
+	InitializeSensors(PWMValue2); // Turns on PWM at 2.5 volts
 
 
 	// If DEBUG is NOT defined, then allow MIDI
@@ -79,7 +82,8 @@ void main( void )
 				USART_TransmitString("Button 2 Pressed.", 17); 
 			#endif
 			
-			PWMValue1 = AutoCalibrate_1(51, 20);
+			//PWMValue1 = AutoCalibrate_1(51, 20);
+			PWMValue2 = AutoCalibrate_2(51, 20);
 		}
 
 	}

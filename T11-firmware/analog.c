@@ -148,7 +148,7 @@ int AnalogRead_PC2(void){
 
 
 // Analog Mean read of Analog Pin 0
-int AnalogRead_MeanPC0(unsigned char NumOfSamplesToAverage){
+unsigned int AnalogRead_MeanPC0(unsigned char NumOfSamplesToAverage){
 
 	int TotalValue = 0;  
 	int MeanValue = 0; 

@@ -100,15 +100,24 @@ void PWM_On_PD6(unsigned char DutyCycle)
 
 void PWM_Change_PB3(unsigned char DutyCycle)
 {
-	// Check to see whether output is enabled. If it is, set duty cycle.
-	// If not, enable PWM with requested DutyCycle and with a default frequency.
-	if (DDRB & (1 << DDB3))
-	{
-		// Set duty cycle by setting Timer2 Output Control Register A
-		OCR2A = DutyCycle; 
-	}else{
-		PWM_On_PB3(DutyCycle);
-	}
+	//Check whether a change is actually needed
+	//if (OldPWMValue1 != DutyCycle)
+		//{
+			// Check to see whether output is enabled. If it is, set duty cycle.
+			// If not, enable PWM with requested DutyCycle and with a default frequency.
+			if (DDRB & (1 << DDB3))
+			{
+				// Set duty cycle by setting Timer2 Output Control Register A
+				OCR2A = DutyCycle; 
+				//OldPWMValue1 = DutyCycle; 
+			}else{
+				PWM_On_PB3(DutyCycle);
+				//OldPWMValue1 = DutyCycle;
+			}
+		//}else
+		//{
+		//	return; 
+		//}
 }
 
 void PWM_Change_PD5(unsigned char DutyCycle)

@@ -6,7 +6,7 @@
 /* Comment out the "#define DEBUG 1" line to turn off debugging output
 !!!!!-WARNING-!!!!! Turn OFF debugging (comment out line) before enabling 
 MIDI, since MIDI needs to use the USART at a different BAUD rate. */
-#define DEBUG 1
+//#define DEBUG 1
 
 #include "main.h"
 #include <avr/io.h> 
@@ -26,12 +26,14 @@ void main( void )
 	This can include initial calibration
 	*/
 	InitializePorts();
-	InitializeSensors(127); // Turns on PWM at 2.5 volts
-	unsigned char PWMValue = 127; 
+	unsigned char PWMValue1 = 127; 
+	unsigned char OldPWMValue1 = 127; 
+	InitializeSensors(PWMValue1); // Turns on PWM at 2.5 volts
+
 
 	// If DEBUG is NOT defined, then allow MIDI
 	#ifndef DEBUG
-		MIDI_Init();
+		//MIDI_Init();
 	#endif
 
 	/* 
@@ -51,11 +53,10 @@ void main( void )
 	
 	while(1)
 	{
-		PWM_Change_PB3(PWMValue); 
-		PWM_Change_PD5(PWMValue); 
-		PWM_Change_PD6(PWMValue); 
+		//PWM_Change_PD5(PWMValue1);
+ 
 		#ifdef DEBUG
-			USART_Transmit(PWMValue); 
+			USART_Transmit(PWMValue1); 
 		#endif
 		if(IsButtonOnePressed()){
 			/* 
@@ -66,12 +67,7 @@ void main( void )
 				USART_TransmitString("Button 1 Pressed.", 17); 
 			#endif
 			
-			if (PWMValue <= 0)
-			{
-				PWMValue = 0; 
-			}else{
-				PWMValue = PWMValue - 1; 
-			}
+
 		}
 
 		if(IsButtonTwoPressed()){
@@ -83,12 +79,7 @@ void main( void )
 				USART_TransmitString("Button 2 Pressed.", 17); 
 			#endif
 			
-			if (PWMValue >= 255)
-			{
-				PWMValue = 255; 
-			}else{
-				PWMValue = PWMValue + 1; 
-			}
+			PWMValue1 = AutoCalibrate_1(51, 20);
 		}
 
 	}

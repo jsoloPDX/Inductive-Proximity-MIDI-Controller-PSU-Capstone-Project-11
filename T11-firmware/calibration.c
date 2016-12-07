@@ -3,7 +3,7 @@ unsigned char AutoCalibrate_1(unsigned char StartingVoltage, unsigned int MinCal
 {
 
 	// Set initial voltage. Delay long enough to reach steady state
-	PWM_Change_PB3(StartingVoltage);
+	PWM_Change_PD5(StartingVoltage);
 	_delay_ms(1000); 
 
 	// Define current PWMValue
@@ -16,8 +16,8 @@ unsigned char AutoCalibrate_1(unsigned char StartingVoltage, unsigned int MinCal
 
 	for (CurrentVoltage = StartingVoltage; CurrentVoltage <= 255; CurrentVoltage = CurrentVoltage + 1)
 	{
-		PWM_Change_PB3(CurrentVoltage); 
-		_delay_ms(100); 
+		PWM_Change_PD5(CurrentVoltage); 
+		_delay_ms(400); 
 		FrequencyToDCValue = AnalogRead_MeanPC0(16);
 		if (FrequencyToDCValue <= MinCalVal)
 		{

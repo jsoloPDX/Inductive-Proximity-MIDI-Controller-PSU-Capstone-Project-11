@@ -26,15 +26,10 @@ void main( void )
 	This can include initial calibration
 	*/
 	InitializePorts();
-	unsigned char PWMValue1 = 127; 
-	unsigned char OldPWMValue1 = 127; 
-	unsigned char PWMValue2 = 127; 
-	unsigned char OldPWMValue2 = 127; 
-	unsigned char PWMValue3 = 127; 
-	unsigned char OldPWMValue3 = 127; 
-
-	InitializeSensors(PWMValue2); // Turns on PWM at 2.5 volts
-
+	
+	// InitialPWMValue and other global variables found in main.h
+	// Enables PWM Sensors, and sets the initial value. 	
+	InitializeSensors(InitialPWMValue); 
 
 	// If DEBUG is NOT defined, then allow MIDI
 	#ifndef DEBUG
@@ -82,9 +77,9 @@ void main( void )
 				USART_TransmitString("Button 2 Pressed.", 17); 
 			#endif
 			
-			PWMValue1 = AutoCalibrate_1(51, 20);
-			PWMValue2 = AutoCalibrate_2(51, 20);
-			PWMValue3 = AutoCalibrate_3(51, 20);
+			PWMValue1 = AutoCalibrate_1(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
+			PWMValue2 = AutoCalibrate_2(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
+			PWMValue3 = AutoCalibrate_3(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
 		}
 
 	}

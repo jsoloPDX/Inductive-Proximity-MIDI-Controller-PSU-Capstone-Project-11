@@ -3,7 +3,8 @@
 
 #define DelayOn 50
 #define DelayOff 100
-#define ADC_THRESHOLD 40 // 20-50 works best, upper value used in zero calibration
+#define CALIBRATION_START_VOLTAGE 51
+#define ADC_THRESHOLD 20 // 20 has been used multiple times and confirmed working
 #define numSam 8         // number of samples for averaging buffer
 
 /* These are sensor values */
@@ -20,6 +21,15 @@
 #define c0 768
 #define c1 896
 #define c2 960
+
+// Global variables
+#define InitialPWMValue 127
+unsigned char PWMValue1 = InitialPWMValue; 
+unsigned char OldPWMValue1 = InitialPWMValue; 
+unsigned char PWMValue2 = InitialPWMValue; 
+unsigned char OldPWMValue2 = InitialPWMValue; 
+unsigned char PWMValue3 = InitialPWMValue; 
+unsigned char OldPWMValue3 = InitialPWMValue; 
 
 // Functions
 void InitializePorts(void);

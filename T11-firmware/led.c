@@ -92,6 +92,15 @@ void LED_ON_All(void)
 	PORTB |= (1 << DDB2);
 }
 
+void LED_OFF_All(void)
+{
+	PORTD &= ~(1<<DDD4);
+	PORTD &= ~(1<<DDD7);
+	PORTB &= ~(1 << DDB0);
+	PORTB &= ~(1<<DDB1);
+	PORTB &= ~(1<<DDB2); 
+}
+
 void LED_ON_One(void)
 {
 	PORTD &= ~(1<<DDD4);
@@ -133,7 +142,7 @@ void LED_ON_Power_One(void)
 {
 	PORTD |= (1 << DDD4);
 	PORTD &= ~(1<<DDD7);
-	PORTB |= ~(1<<DDB0);
+	PORTB |= (1<<DDB0);
 	PORTB &= ~(1<<DDB1);
 	PORTB &= ~(1<<DDB2);
 }

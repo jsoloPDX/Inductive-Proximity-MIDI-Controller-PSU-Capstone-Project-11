@@ -30,6 +30,8 @@ void main( void )
 	unsigned char OldPWMValue1 = 127; 
 	unsigned char PWMValue2 = 127; 
 	unsigned char OldPWMValue2 = 127; 
+	unsigned char PWMValue3 = 127; 
+	unsigned char OldPWMValue3 = 127; 
 
 	InitializeSensors(PWMValue2); // Turns on PWM at 2.5 volts
 
@@ -83,7 +85,8 @@ void main( void )
 			#endif
 			
 			//PWMValue1 = AutoCalibrate_1(51, 20);
-			PWMValue2 = AutoCalibrate_2(51, 20);
+			//PWMValue2 = AutoCalibrate_2(51, 20);
+			PWMValue3 = AutoCalibrate_3(51, 20);
 		}
 
 	}

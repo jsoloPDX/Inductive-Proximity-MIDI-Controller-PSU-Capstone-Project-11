@@ -65,6 +65,26 @@ void main( void )
 				USART_TransmitString("Button 1 Pressed.", 17); 
 			#endif
 			
+			if (CurrentMode >= MODE_3)
+			{
+				CurrentMode = IDLE; 
+				LED_OFF_All();
+			}else
+			{
+				CurrentMode = CurrentMode + 1; 
+				switch(CurrentMode)
+				{
+					case MODE_1:
+					LED_ON_One();
+					break;
+					case MODE_2:
+					LED_ON_Two();
+					break;
+					case MODE_3:
+					LED_ON_Three();
+					break;	
+				}
+			}
 
 		}
 
@@ -77,9 +97,29 @@ void main( void )
 				USART_TransmitString("Button 2 Pressed.", 17); 
 			#endif
 			
-			PWMValue1 = AutoCalibrate_1(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
-			PWMValue2 = AutoCalibrate_2(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
-			PWMValue3 = AutoCalibrate_3(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
+			CurrentMode = CALIBRATION; 
+		}
+
+		switch(CurrentMode)
+		{
+			case IDLE: 
+				//Do Nothing
+				break;
+			case MODE_1:
+				// Do MODE1 stuff
+				break;
+			case MODE_2: 
+				// Do MODE2 stuff
+				break;
+			case MODE_3: 
+				// Do MODE3 stuff
+				break;
+			case CALIBRATION:
+				PWMValue1 = AutoCalibrate_1(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
+				PWMValue2 = AutoCalibrate_2(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
+				PWMValue3 = AutoCalibrate_3(CALIBRATION_START_VOLTAGE, ADC_THRESHOLD);
+				CurrentMode = IDLE;
+				break; 
 		}
 
 	}

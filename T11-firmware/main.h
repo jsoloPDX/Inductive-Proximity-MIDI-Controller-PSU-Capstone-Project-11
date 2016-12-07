@@ -31,6 +31,14 @@ unsigned char OldPWMValue2 = InitialPWMValue;
 unsigned char PWMValue3 = InitialPWMValue; 
 unsigned char OldPWMValue3 = InitialPWMValue; 
 
+//Mode stuff
+#define IDLE 0
+#define MODE_1 1
+#define MODE_2 2
+#define MODE_3 3
+#define CALIBRATION 4
+unsigned char CurrentMode = IDLE;
+ 
 // Functions
 void InitializePorts(void);
 void InitializeBuffer(int* ADC_Buffer1);

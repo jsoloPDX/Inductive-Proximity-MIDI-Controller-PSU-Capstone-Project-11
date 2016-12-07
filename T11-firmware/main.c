@@ -56,49 +56,8 @@ void main( void )
 		#ifdef DEBUG
 			USART_Transmit(PWMValue1); 
 		#endif
-		if(IsButtonOnePressed()){
-			/* 
-			Conditionals to toggle between all modes per the software
-			state diagram. (Switch 1: Mostly used for play modes)
-			*/
-			#ifdef DEBUG
-				USART_TransmitString("Button 1 Pressed.", 17); 
-			#endif
-			
-			if (CurrentMode >= MODE_3)
-			{
-				CurrentMode = IDLE; 
-				LED_OFF_All();
-			}else
-			{
-				CurrentMode = CurrentMode + 1; 
-				switch(CurrentMode)
-				{
-					case MODE_1:
-					LED_ON_One();
-					break;
-					case MODE_2:
-					LED_ON_Two();
-					break;
-					case MODE_3:
-					LED_ON_Three();
-					break;	
-				}
-			}
-
-		}
-
-		if(IsButtonTwoPressed()){
-			/* 
-			Conditionals to toggle between all modes per the software
-			state diagram. (Switch 2: Mostly used for calibration)
-			*/
-			#ifdef DEBUG
-				USART_TransmitString("Button 2 Pressed.", 17); 
-			#endif
-			
-			CurrentMode = CALIBRATION; 
-		}
+		HandleButtonOnePress();
+		HandleButtonTwoPress(); 
 
 		switch(CurrentMode)
 		{

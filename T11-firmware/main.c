@@ -84,8 +84,8 @@ void main( void )
 				USART_TransmitString("Button 2 Pressed.", 17); 
 			#endif
 			
-			//PWMValue1 = AutoCalibrate_1(51, 20);
-			//PWMValue2 = AutoCalibrate_2(51, 20);
+			PWMValue1 = AutoCalibrate_1(51, 20);
+			PWMValue2 = AutoCalibrate_2(51, 20);
 			PWMValue3 = AutoCalibrate_3(51, 20);
 		}
 

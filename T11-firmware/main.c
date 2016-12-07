@@ -38,7 +38,7 @@ void main( void )
 
 	// If DEBUG is NOT defined, then allow MIDI
 	#ifndef DEBUG
-		//MIDI_Init();
+		MIDI_Init();
 	#endif
 
 	/* 
@@ -58,8 +58,6 @@ void main( void )
 	
 	while(1)
 	{
-		//PWM_Change_PD5(PWMValue1);
- 
 		#ifdef DEBUG
 			USART_Transmit(PWMValue1); 
 		#endif

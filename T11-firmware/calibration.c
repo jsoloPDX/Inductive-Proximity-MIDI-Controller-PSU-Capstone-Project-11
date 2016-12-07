@@ -35,6 +35,8 @@ unsigned char AutoCalibrate_1(unsigned char StartingVoltage, unsigned int MinCal
 //Code to calibrate Sensor 2
 unsigned char AutoCalibrate_2(unsigned char StartingVoltage, unsigned int MinCalVal)
 {
+	// Turn on LED 2 & Power LED to indicate calibration for sensor 1 is in progress
+	LED_ON_Power_Two();
 
 	// Set initial voltage. Delay long enough to reach steady state
 	PWM_Change_PD6(StartingVoltage);
@@ -55,6 +57,8 @@ unsigned char AutoCalibrate_2(unsigned char StartingVoltage, unsigned int MinCal
 		FrequencyToDCValue = AnalogRead_MeanPC1(16);
 		if (FrequencyToDCValue <= MinCalVal)
 		{
+			// Turn off LEDs
+			LED_OFF_All();
 			return(CurrentVoltage); 
 		} 
 	}

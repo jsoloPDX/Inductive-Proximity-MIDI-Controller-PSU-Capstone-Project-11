@@ -19,7 +19,7 @@ void main( void )
 	This code was confirmed to work using the HW layout 
 	demonstrated in the schematic. 
 	*/
-	MIDI_Init();
+	//MIDI_Init();
 	unsigned char NoteON = 0x90;
 	unsigned char DataNote = 0x50;
 	unsigned char DataVelocity = 0x7F; 
@@ -27,9 +27,9 @@ void main( void )
 
 	while(1)
 	{
-		MIDI_Transmit(NoteON,DataNote,DataVelocity);
+		//MIDI_Transmit(NoteON,DataNote,DataVelocity);
 		_delay_ms(1000);
-		MIDI_Transmit(NoteOFF,DataNote,DataVelocity);
+		//MIDI_Transmit(NoteOFF,DataNote,DataVelocity);
 		_delay_ms(1000);
 	}
 }

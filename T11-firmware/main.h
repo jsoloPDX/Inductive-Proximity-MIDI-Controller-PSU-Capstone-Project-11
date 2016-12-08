@@ -38,6 +38,13 @@ unsigned char OldPWMValue3 = InitialPWMValue;
 #define MODE_3 3
 #define CALIBRATION 4
 unsigned char CurrentMode = IDLE;
+
+//MIDI Stuff
+#define NoteON 0x90
+#define NoteOFF 0x80
+unsigned char lowMidi = 36; 
+unsigned char curMidi = 36; 
+
  
 // Functions
 void InitializePorts(void);

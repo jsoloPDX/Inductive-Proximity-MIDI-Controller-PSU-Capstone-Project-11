@@ -18,6 +18,7 @@ MIDI, since MIDI needs to use the USART at a different BAUD rate. */
 #include "led.h"
 #include "buttons.h" 
 #include "calibration.h"
+#include "mode1.h"
 
 void main( void )
 {
@@ -65,7 +66,7 @@ void main( void )
 				//Do Nothing
 				break;
 			case MODE_1:
-				// Do MODE1 stuff
+				curMidi = updatePitchChangeMode(1, ADC_THRESHOLD, 2, lowMidi, curMidi);
 				break;
 			case MODE_2: 
 				// Do MODE2 stuff

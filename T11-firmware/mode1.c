@@ -11,15 +11,15 @@ unsigned char getPitch(unsigned char sensorNum, unsigned char minCalVal)
 	switch(sensorNum)
 	{
 	case(1):
-	sensorVal = AnalogRead_MeanPC0(16); 
+	sensorVal = AnalogRead_PC0(); 
 	break;
 
 	case(2):
-	sensorVal = AnalogRead_MeanPC1(16); 
+	sensorVal = AnalogRead_PC1(); 
 	break;
 
 	case(3):
-	sensorVal = AnalogRead_MeanPC2(16);
+	sensorVal = AnalogRead_PC2();
 	break;
 	}
 
@@ -82,15 +82,15 @@ unsigned char getVelocity(sensNum)
 	switch(sensNum)
 	{
 	case(1): 
-	analogReadValue = AnalogRead_MeanPC0(16); 
+	analogReadValue = AnalogRead_PC0(); 
 	break; 
 
 	case(2): 
-	analogReadValue = AnalogRead_MeanPC1(16); 
+	analogReadValue = AnalogRead_PC1(); 
 	break; 
 
 	case(3): 
-	analogReadValue = AnalogRead_MeanPC2(16); 
+	analogReadValue = AnalogRead_PC2(); 
 	break; 
 	}
 

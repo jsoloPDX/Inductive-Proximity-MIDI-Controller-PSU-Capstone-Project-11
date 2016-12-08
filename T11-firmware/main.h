@@ -45,6 +45,10 @@ unsigned char CurrentMode = IDLE;
 unsigned char lowMidi = 36; 
 unsigned char curMidi = 36; 
 
+//Averaging Stuff
+unsigned char AverageCount = 0; 
+unsigned char AverageTotal = 16; 
+unsigned int AverageArray[16]; 
  
 // Functions
 void InitializePorts(void);

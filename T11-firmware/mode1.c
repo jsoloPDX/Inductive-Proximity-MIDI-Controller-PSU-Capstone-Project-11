@@ -11,7 +11,7 @@ unsigned char getPitch(unsigned char sensorNum, unsigned char minCalVal)
 	switch(sensorNum)
 	{
 	case(1):
-	sensorVal = AnalogRead_PC0(); 
+	sensorVal = AnalogRead_Mean2PC0(); 
 	break;
 
 	case(2):

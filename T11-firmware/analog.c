@@ -233,6 +233,7 @@ int AnalogRead_MeanPC2(unsigned char NumOfSamplesToAverage){
 // Analog Mean 2 read of Analog Pin 0
 unsigned int AnalogRead_Mean2PC0(void){
 	unsigned char i = 0;
+	unsigned int TotalValue = 0; 
 
 	// If not enough samples, fill buffer first 	
 	while (AverageCount <= AverageTotal)
@@ -248,14 +249,10 @@ unsigned int AnalogRead_Mean2PC0(void){
 	// Shift Array
 	for (i = 0; i < AverageTotal; i = i + 1)
 	{
+		TotalValue = TotalValue + AverageArray[16-i]; 
 		AverageArray[16-i] = AverageArray[15-i]; 
 	}
 	AverageArray[0] = AnalogRead_PC0(); 
 
-	unsigned int TotalValue = 0; 
-	for (i = 0; i < AverageTotal; i = i + 1)
-	{
-		TotalValue = TotalValue + AverageArray[i]; 
-	}	
 	return (TotalValue >> 4); 
 }
